@@ -1,0 +1,16 @@
+1. Download all files using DownThemAll! into the unsorted_years folder
+2. delete_extras.py
+3. year_sort.py
+    - IC files from 1995-1997 must be manually resorted
+    - Pub_studentCount and Pub_FinancialAid must be manually sorted to 1999
+4. add_zipped_insheet_cd.py
+5. replace_zipped_insheet_file_path.py
+6. add_zipped_capture_label.py
+7. unzip_files.py
+8. create_dta.py
+9. insheet_error_files.py
+10. Manually fix and insheet the files that could not be done automatically
+    - EFFY2011, EFFY2012, EFIA2013, HD2013, IC2013, FLAGS2013, HD2014 file doesn't have a save
+    - EF2008CP has no variable names
+11. delete_extracted_files.py
+12. delete_extras.py
