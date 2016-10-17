@@ -16,18 +16,18 @@ def add_ipeds_zipped_insheet_cd(zipped_file_path):
         unzipped_file_text = None
         with open(unzipped_file_path, 'r', encoding='iso-8859-1') as original_unzipped_file:
             unzipped_file_text = original_unzipped_file.read()
-            if unzipped_file_text.find("* cd added in python") != -1:
+            if unzipped_file_text.find("* directory changed in python") != -1:
                 cd_added = True
             else:
                 cd_added = False
         if cd_added is True:
-            print("Directory already changed")
+            print("Directory already changed in python")
         elif cd_added is False:
             with open(unzipped_file_path, 'w', encoding='iso-8859-1') as edited_unzipped_file:
                 print("Adding cd " + year_folder_path + " to " + unzipped_file_name)
                 unzipped_file_text = 'cd "' + year_folder_path + '"' + '\n' + unzipped_file_text
                 print("Marking " + unzipped_file_name + " as edited")
-                unzipped_file_text = "* cd added in python" + "\n" + unzipped_file_text
+                unzipped_file_text = "* directory changed in python" + "\n" + unzipped_file_text
                 print("Saving " + unzipped_file_name)
                 edited_unzipped_file.write(unzipped_file_text)
     with zipfile.ZipFile(zipped_file_path, 'w', zipfile.ZIP_DEFLATED) as zipped_file:

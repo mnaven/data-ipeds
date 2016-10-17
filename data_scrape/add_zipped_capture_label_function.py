@@ -16,18 +16,18 @@ def add_ipeds_zipped_capture_label(zipped_file_path):
         unzipped_file_text = None
         with open(unzipped_file_path, 'r', encoding='iso-8859-1') as original_unzipped_file:
             unzipped_file_text = original_unzipped_file.read()
-            if unzipped_file_text.find("* capture added in python") != -1:
+            if unzipped_file_text.find("* capture label added in python") != -1:
                 capture_added = True
             else:
                 capture_added = False
         if capture_added is True:
-            print("Capture already added")
+            print("Capture label already added in python")
         elif capture_added is False:
             with open(unzipped_file_path, 'w', encoding='iso-8859-1') as edited_unzipped_file:
                 print("Adding capture to all label commands")
                 unzipped_file_text = unzipped_file_text.replace("\n" + "label", "\n" + "capture label")
                 print("Marking " + unzipped_file_name + " as edited")
-                unzipped_file_text = "* capture added in python" + "\n" + unzipped_file_text
+                unzipped_file_text = "* capture label added in python" + "\n" + unzipped_file_text
                 print("Saving " + unzipped_file_name)
                 edited_unzipped_file.write(unzipped_file_text)
     with zipfile.ZipFile(zipped_file_path, 'w', zipfile.ZIP_DEFLATED) as zipped_file:

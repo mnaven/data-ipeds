@@ -17,18 +17,18 @@ def replace_ipeds_zipped_insheet_file_path(zipped_file_path):
         unzipped_file_text = None
         with open(unzipped_file_path, 'r', encoding='iso-8859-1') as original_unzipped_file:
             unzipped_file_text = original_unzipped_file.read()
-            if unzipped_file_text.find("* path replaced in python") != -1:
+            if unzipped_file_text.find("* insheet file path replaced in python") != -1:
                 path_replaced = True
             else:
                 path_replaced = False
         if path_replaced is True:
-            print("File path already replaced")
+            print("Insheet file path already replaced in python")
         elif path_replaced is False:
             with open(unzipped_file_path, 'w', encoding='iso-8859-1') as edited_unzipped_file:
-                print("Deleting file path in " + unzipped_file_name)
+                print("Deleting original insheet file path in " + unzipped_file_name)
                 unzipped_file_text = re.sub(r'insheet using .*\\', 'insheet using "', unzipped_file_text)
                 print("Marking " + unzipped_file_name + " as edited")
-                unzipped_file_text = "* path replaced in python" + "\n" + unzipped_file_text
+                unzipped_file_text = "* insheet file path replaced in python" + "\n" + unzipped_file_text
                 print("Saving " + unzipped_file_name)
                 edited_unzipped_file.write(unzipped_file_text)
     with zipfile.ZipFile(zipped_file_path, 'w', zipfile.ZIP_DEFLATED) as zipped_file:

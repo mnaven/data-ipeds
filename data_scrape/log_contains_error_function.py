@@ -14,8 +14,8 @@ def ipeds_log_contains_error(file_path):
                 print(file_name + " has already created a .dta file")
                 return False
             else:
-                print("Error in log file " + file_name)
+                print("There is an error in log file " + file_name)
                 return True
         else:
-            print("No error in log file " + file_name)
+            print("No errors in log file " + file_name)
             return False

@@ -4,7 +4,7 @@ import zipfile
 __author__ = 'Naven'
 
 
-directory = "/Users/Naven/Google Drive/data/ipeds/raw_data"
+directory = "/Users/Naven/Documents/Research/data/ipeds/raw_data"
 # Go through all the files and folders contained in the directory
 for directory_path, directory_names_list, file_names_list in os.walk(directory):
     for file_name in file_names_list:
@@ -12,6 +12,7 @@ for directory_path, directory_names_list, file_names_list in os.walk(directory):
         # Make sure the file is a zip file before unzipping
         print("Checking if " + file_name + " ends in .zip")
         if file_name.endswith(".zip"):
+            print(file_name + " ends in .zip")
             # Unzip the zipped file
             with zipfile.ZipFile(file_path, 'r') as zipped_file:
                 print("Unzipping " + file_name + " to " + directory_path)

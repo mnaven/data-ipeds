@@ -5,8 +5,10 @@ __author__ = 'Naven'
 
 
 def ipeds_year(file_path):
+    newest_data_year = 2015
+    range_max = newest_data_year + 1
     all_years = ["1980"]
-    for year in range(1984, 2015, 1):
+    for year in range(1984, range_max, 1):
         all_years.append(str(year))
 
     file_name = os.path.basename(file_path)
