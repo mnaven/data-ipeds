@@ -5,6 +5,9 @@ README for downloading raw data from IPEDS
 2. delete_extras.py
     - Deletes any files that are duplicates, SPSS, or SAS files.
 
+3. dictionary_sort.py
+    - Sorts all dictionary files to the codebook folder.
+
 3. year_sort.py
     - Sorts all of the downloaded files from the unsorted years folder into years that correspond to the year of the data.
     - IC files from 1995-1997 must be manually resorted

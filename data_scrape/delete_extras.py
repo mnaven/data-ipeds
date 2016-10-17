@@ -11,17 +11,17 @@ for directory_path, directory_names_list, file_names_list in os.walk(directory):
         if file_name.endswith(".zip"):
             print(file_name + " is a zip file")
             print("Checking if " + file_name + " is a duplicate, SPSS, or SAS file")
-            if re.search(r"\([0-9]\)", file_name) is not None:
+            if re.search(r"\([0-9]+?\)", file_name) is not None:
                 print(file_name + " is a duplicate")
                 print("Deleting " + file_name)
                 file_path = os.path.join(directory_path, file_name)
                 os.remove(file_path)
-            if file_name.endswith("SPS.zip"):
+            if os.path.splitext(file_name)[0].endswith("SPS"):
                 print(file_name + " is a SPSS file")
                 print("Deleting " + file_name)
                 file_path = os.path.join(directory_path, file_name)
                 os.remove(file_path)
-            if file_name.endswith("SAS.zip"):
+            if os.path.splitext(file_name)[0].endswith("SAS"):
                 print(file_name + " is a SAS file")
                 print("Deleting " + file_name)
                 file_path = os.path.join(directory_path, file_name)

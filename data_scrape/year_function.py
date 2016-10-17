@@ -20,7 +20,7 @@ def ipeds_year(file_path):
         four_digits = four_digit_search.group(2)
         if four_digits in all_years:
             year = four_digits
-        else:  # Accounts for four digits that denote two consecutive years
+        elif int(four_digits[0:2]) == int(four_digits[-2:]) - 1:  # Accounts for four digits that denote two consecutive years
             two_digit_year = four_digits[-2:]
             for four_digit_year in all_years:
                 if two_digit_year == four_digit_year[-2:]:
@@ -32,4 +32,11 @@ def ipeds_year(file_path):
                 if two_digits == four_digit_year[-2:]:
                     year = four_digit_year
                     break
+
+    # List of files that must be manually sorted
+    elif file_name.startswith("Pub_studentCount"):
+        year = 1999
+    elif file_name.startswith("Pub_FinancialAid"):
+        year == 1999
+
     return year
