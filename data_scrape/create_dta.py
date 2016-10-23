@@ -1,18 +1,25 @@
+#!/usr/bin/env python
+
+"""Creates a dta file from the unzipped IPEDS csv files"""
+
 import os
-from create_dta_function import create_ipeds_dta
+from create_dta_function import ipeds_create_dta
 
-__author__ = 'Naven'
+__author__ = "Matthew Naven"
+__copyright__ = "Copyright 2016, Matthew Naven"
+__email__ = "msnaven@ucdavis.edu"
 
 
-directory = "/Users/Naven/Documents/Research/data/ipeds/raw_data"
+do_files_directory = "/Users/Naven/Documents/Research/data/ipeds/do_files"
+stata_console_executable_path = "/Applications/Stata/StataMP.app/Contents/MacOS/Stata-mp"
+stata_gui_executable_path = "/Applications/Stata/StataMP.app/Contents/MacOS/StataMP"
+
 # Go through all the files and folders contained in the directory, now including the unzipped files
-for directory_path, directory_names_list, file_names_list in os.walk(directory):
+for directory_path, directory_names_list, file_names_list in os.walk(do_files_directory):
     for file_name in file_names_list:
         file_path = os.path.join(directory_path, file_name)
-        # Make sure the file is a do file before running it in stata
-        print("Checking if " + file_name + " ends in .do")
+        print("Checking if " + file_name + " is a do file")
         if file_name.endswith(".do"):
-            print(file_name + " ends in .do")
-            print("Creating a dta file using the do file " + file_name)
-            # Run the do file in stata in order to create a dta file from the csv file
-            create_ipeds_dta(file_path)
+            print(file_name + " is a do file")
+            print("Creating a dta file with Stata using the do file " + file_name)
+            ipeds_create_dta(file_path, stata_console_executable_path)
