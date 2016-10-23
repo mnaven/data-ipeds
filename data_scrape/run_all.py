@@ -7,21 +7,29 @@ __author__ = 'Naven'
 os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")
 exec(compile(open('delete_extras.py', 'rb').read(), 'delete_extras.py', 'exec'))
 
-# Year Sort
+# Dictionary Sort
 os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")
-exec(compile(open('year_sort.py', 'rb').read(), 'year_sort.py', 'exec'))
+exec(compile(open('dictionary_sort.py', 'rb').read(), 'dictionary_sort.py', 'exec'))
 
-# Add Zipped Insheet CD
+# Do File Sort
 os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")
-exec(compile(open('add_zipped_insheet_cd.py', 'rb').read(), 'add_zipped_insheet_cd.py', 'exec'))
+exec(compile(open('do_file_sort.py', 'rb').read(), 'do_file_sort.py', 'exec'))
 
-# Replace Zipped Insheet File Path
+# Raw Data Sort
 os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")
-exec(compile(open('replace_zipped_insheet_file_path.py', 'rb').read(), 'replace_zipped_insheet_file_path.py', 'exec'))
+exec(compile(open('raw_data_sort.py', 'rb').read(), 'raw_data_sort.py', 'exec'))
 
-# Add Zipped Capture Label
+# Change Insheet Directory
 os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")
-exec(compile(open('add_zipped_capture_label.py', 'rb').read(), 'add_zipped_capture_label.py', 'exec'))
+exec(compile(open('change_insheet_directory_zip.py', 'rb').read(), 'change_insheet_directory_zip.py', 'exec'))
+
+# Replace Insheet Data Path
+os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")
+exec(compile(open('replace_insheet_data_path_zip.py', 'rb').read(), 'replace_insheet_data_path_zip.py', 'exec'))
+
+# Capture Label
+os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")
+exec(compile(open('capture_label_zip.py', 'rb').read(), 'capture_label_zip.py', 'exec'))
 
 # Unzip Files
 os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")
@@ -42,4 +50,3 @@ exec(compile(open('delete_extracted_files.py', 'rb').read(), 'delete_extracted_f
 # Delete Extras
 os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")
 exec(compile(open('delete_extras.py', 'rb').read(), 'delete_extras.py', 'exec'))
-
