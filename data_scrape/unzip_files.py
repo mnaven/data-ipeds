@@ -1,19 +1,24 @@
+#!/usr/bin/env python
+
+"""Unzips all of the downloaded IPEDS files"""
+
 import os
 import zipfile
 
-__author__ = 'Naven'
+__author__ = "Matthew Naven"
+__copyright__ = "Copyright 2016, Matthew Naven"
+__email__ = "msnaven@ucdavis.edu"
 
 
-directory = "/Users/Naven/Documents/Research/data/ipeds/raw_data"
-# Go through all the files and folders contained in the directory
-for directory_path, directory_names_list, file_names_list in os.walk(directory):
+ipeds_directory = "/Users/Naven/Documents/Research/data/ipeds"
+
+# Go through all the files and folders contained in the IPEDS directory
+for directory_path, directory_names_list, file_names_list in os.walk(ipeds_directory):
     for file_name in file_names_list:
-        file_path = os.path.join(directory_path, file_name)
-        # Make sure the file is a zip file before unzipping
-        print("Checking if " + file_name + " ends in .zip")
+        print("Checking if " + file_name + " is a zip file")
         if file_name.endswith(".zip"):
-            print(file_name + " ends in .zip")
-            # Unzip the zipped file
+            print(file_name + " is a zip file")
+            file_path = os.path.join(directory_path, file_name)
             with zipfile.ZipFile(file_path, 'r') as zipped_file:
                 print("Unzipping " + file_name + " to " + directory_path)
                 zipped_file.extractall(directory_path)
