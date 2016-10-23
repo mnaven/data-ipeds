@@ -1,16 +1,28 @@
-from year_function import ipeds_year
-import os
+#!/usr/bin/env python
 
-__author__ = 'Naven'
+"""Creates a function that sorts all of the downloaded dictionary files to the codebooks folder"""
+
+import os
+from year_function import ipeds_year
+
+__author__ = "Matthew Naven"
+__copyright__ = "Copyright 2016, Matthew Naven"
+__email__ = "msnaven@ucdavis.edu"
 
 
 def ipeds_dictionary_sort(file_path):
-    unsorted_years_folder_path = os.path.dirname(file_path)
-    codebooks_directory = os.path.join(unsorted_years_folder_path, os.path.pardir, os.path.pardir, "codebooks")
+    downloads_directory = os.path.dirname(file_path)
+    codebooks_directory = os.path.join(downloads_directory, os.path.pardir, "codebooks")
+    if not os.path.exists(codebooks_directory):
+        print("Creating folder " + codebooks_directory)
+        os.makedirs(codebooks_directory)
     file_name = os.path.basename(file_path)
+
     year = ipeds_year(file_name)
+
     if year is None:
         print("No dictionary year found for " + file_name)
+
     else:
         print("The dictionary year for " + file_name + " is " + year)
         year_folder_path = os.path.join(codebooks_directory, year)
