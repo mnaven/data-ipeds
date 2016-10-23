@@ -3,7 +3,7 @@ import requests
 import re
 import os
 from ipeds_year import ipeds_year
-from replace_zipped_insheet_file_path import replace_ipeds_zipped_insheet_file_path
+from replace_insheet_data_path_zip import ipeds_replace_insheet_data_path_zip
 
 __author__ = 'Naven'
 
@@ -201,7 +201,7 @@ for url in url_list:
                 print("Saving " + zipped_file_name)
                 zipped_file.write(url_request.content)
 
-            replace_ipeds_zipped_insheet_file_path(zipped_file_path)
+            ipeds_replace_insheet_data_path_zip(zipped_file_path)
 
             # with zipfile.ZipFile(zipped_file_path, 'r') as zipped_file:
             #     unzipped_file_name = zipped_file.namelist()[0]
