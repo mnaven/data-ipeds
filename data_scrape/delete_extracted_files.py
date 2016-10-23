@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Delete all IPEDS do, csv, and html files after the dta files have been created"""
+"""Deletes all IPEDS do, csv, and html files after the dta files have been created"""
 
 import os
 

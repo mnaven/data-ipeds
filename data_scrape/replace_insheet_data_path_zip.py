@@ -20,8 +20,8 @@ for directory_path, directory_names_list, file_names_list in os.walk(do_files_di
         if file_name.endswith(".zip"):
             print(file_name + " is a zip file")
             print("Checking if " + file_name + " contains a do file")
-            file_path = os.path.join(directory_path, file_name)
-            if zip_contains_do_file(file_path):
+            zip_file_path = os.path.join(directory_path, file_name)
+            if zip_contains_do_file(zip_file_path):
                 print(file_name + " contains a do file")
                 print("Replacing the insheet data path in " + file_name)
-                ipeds_replace_insheet_data_path_zip(file_path)
+                ipeds_replace_insheet_data_path_zip(zip_file_path)

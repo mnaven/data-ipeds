@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Creates a function that returns the spring academic year from an IPEDS file"""
+"""Creates a function that returns the spring academic year from a downloaded IPEDS file"""
 
 import os
 import re
@@ -16,9 +16,9 @@ def ipeds_year(file_path):
     range_max = latest_data_year + 1
 
     # List of all the years for which IPEDS has released data
-    all_years = ["1980"]
+    all_ipeds_years = ["1980"]
     for year in range(1984, range_max, 1):
-        all_years.append(str(year))
+        all_ipeds_years.append(str(year))
 
     year = None
 
@@ -30,12 +30,14 @@ def ipeds_year(file_path):
     # If a four digit numerical string is found
     if four_digit_search:
         four_digits = four_digit_search.group(2)
-        if four_digits in all_years:
+
+        if four_digits in all_ipeds_years:
             year = four_digits
+
         # Accounts for four digits that denote two consecutive years
         elif int(four_digits[0:2]) == int(four_digits[-2:]) - 1:
             two_digit_year = four_digits[-2:]
-            for four_digit_year in all_years:
+            for four_digit_year in all_ipeds_years:
                 if two_digit_year == four_digit_year[-2:]:
                     year = four_digit_year
                     break
@@ -43,7 +45,7 @@ def ipeds_year(file_path):
     # If a two digit numerical string is found
     elif two_digit_search:
         two_digits = two_digit_search.group(2)
-        for four_digit_year in all_years:
+        for four_digit_year in all_ipeds_years:
                 if two_digits == four_digit_year[-2:]:
                     year = four_digit_year
                     break

@@ -19,5 +19,5 @@ for directory_path, directory_names_list, file_names_list in os.walk(do_files_di
         if file_name.endswith(".do"):
             print(file_name + " is a do file")
             print("Changing the insheet directory in " + file_name)
-            file_path = os.path.join(directory_path, file_name)
-            ipeds_change_insheet_directory(file_path)
+            do_file_path = os.path.join(directory_path, file_name)
+            ipeds_change_insheet_directory(do_file_path)

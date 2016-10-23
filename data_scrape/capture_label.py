@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Prefixes capture to all of the label commands in the IPEDS insheet file because some labels are incorrectly coded or contain illegal characters"""
+"""Prefixes capture to all of the label commands in a IPEDS insheet file because some labels are incorrectly coded or contain illegal characters"""
 
 import os
 from capture_label_function import ipeds_capture_label
@@ -19,5 +19,5 @@ for directory_path, directory_names_list, file_names_list in os.walk(do_files_di
         if file_name.endswith(".do"):
             print(file_name + " is a do file")
             print("Prefixing capture to all label commands in " + file_name)
-            file_path = os.path.join(directory_path, file_name)
-            ipeds_capture_label(file_path)
+            do_file_path = os.path.join(directory_path, file_name)
+            ipeds_capture_label(do_file_path)

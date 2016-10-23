@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Prefixes capture to all of the label commands in the zipped IPEDS insheet file because some labels are incorrectly coded or contain illegal characters"""
+"""Prefixes capture to all of the label commands in a zipped IPEDS insheet file because some labels are incorrectly coded or contain illegal characters"""
 
 import os
 from zip_contains_do_file_function import zip_contains_do_file
@@ -20,8 +20,8 @@ for directory_path, directory_names_list, file_names_list in os.walk(do_files_di
         if file_name.endswith(".zip"):
             print(file_name + " is a zip file")
             print("Checking if " + file_name + " contains a do file")
-            file_path = os.path.join(directory_path, file_name)
-            if zip_contains_do_file(file_path):
+            zip_file_path = os.path.join(directory_path, file_name)
+            if zip_contains_do_file(zip_file_path):
                 print(file_name + " contains a do file")
                 print("Prefixing capture to all label commands in " + file_name)
-                ipeds_capture_label_zip(file_path)
+                ipeds_capture_label_zip(zip_file_path)

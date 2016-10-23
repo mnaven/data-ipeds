@@ -18,7 +18,7 @@ for directory_path, directory_names_list, file_names_list in os.walk(ipeds_direc
         print("Checking if " + file_name + " is a zip file")
         if file_name.endswith(".zip"):
             print(file_name + " is a zip file")
-            file_path = os.path.join(directory_path, file_name)
-            with zipfile.ZipFile(file_path, 'r') as zipped_file:
+            zip_file_path = os.path.join(directory_path, file_name)
+            with zipfile.ZipFile(zip_file_path, 'r') as zipped_file:
                 print("Unzipping " + file_name + " to " + directory_path)
                 zipped_file.extractall(directory_path)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Creates a function that sorts all of the downloaded do files to the do_files folder"""
+"""Creates a function that sorts all of the downloaded IPEDS do files to the do files folder"""
 
 import os
 from year_function import ipeds_year
@@ -10,25 +10,25 @@ __copyright__ = "Copyright 2016, Matthew Naven"
 __email__ = "msnaven@ucdavis.edu"
 
 
-def ipeds_do_file_sort(file_path):
-    downloads_directory = os.path.dirname(file_path)
+def ipeds_do_file_sort(do_file_path):
+    downloads_directory = os.path.dirname(do_file_path)
     do_files_directory = os.path.join(downloads_directory, os.path.pardir, "do_files")
     if not os.path.exists(do_files_directory):
         print("Creating folder " + do_files_directory)
         os.makedirs(do_files_directory)
-    file_name = os.path.basename(file_path)
+    do_file_name = os.path.basename(do_file_path)
 
-    year = ipeds_year(file_name)
+    do_file_year = ipeds_year(do_file_name)
 
-    if year is None:
-        print("No data year found for " + file_name)
+    if do_file_year is None:
+        print("No data year found for " + do_file_name)
 
     else:
-        print("The data year for " + file_name + " is " + year)
-        year_folder_path = os.path.join(do_files_directory, year)
-        if not os.path.exists(year_folder_path):
-            print("Creating folder " + year_folder_path)
-            os.makedirs(year_folder_path)
-        destination_file_path = os.path.join(year_folder_path, file_name)
-        print("Renaming " + file_path + " as " + destination_file_path)
-        os.rename(file_path, destination_file_path)
+        print("The data year for " + do_file_name + " is " + do_file_year)
+        do_file_year_folder_path = os.path.join(do_files_directory, do_file_year)
+        if not os.path.exists(do_file_year_folder_path):
+            print("Creating folder " + do_file_year_folder_path)
+            os.makedirs(do_file_year_folder_path)
+        destination_file_path = os.path.join(do_file_year_folder_path, do_file_name)
+        print("Renaming " + do_file_path + " as " + destination_file_path)
+        os.rename(do_file_path, destination_file_path)
