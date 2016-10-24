@@ -41,6 +41,8 @@
 
 <p>You will need <a href="https://www.python.org/downloads/">Python</a> and Stata to run the code. Download either a zip or tarball of the code by clicking the download link at the top of the page, then unzip/unpack this file, which I will refer to as the <em>IPEDS directory</em>. Within the <em>IPEDS directory</em>, create a folder named <em>downloads</em>.</p>
 
+<p>The current version as is only works for Mac and Linux, although I am in the process of adding Windows compatibility. The primary difficulty in making the scripts multi-platform is the location of Stata in the file system. If you use Windows and know the file path of the Stata executable file, then you can replace <em>ipeds_create_dta(do_file_path, stata_gui_executable_path)</em> in the <em>create_dta.py</em> file with <em>ipeds_create_dta(do_file_path, <strong>"Stata Executable Path"</strong>)</em>, where <em>Stata Executable Path</em> is the file path of the Stata.exe file (the double quotes are necessary).</p>
+
 <h2>
 <a id="downloading-the-ipeds-files" class="anchor" href="#downloading-the-ipeds-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Downloading the IPEDS Files</h2>
 
@@ -64,6 +66,11 @@
 <a id="do-files" class="anchor" href="#do-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Do Files</h3>
 
 <p>After creating individual year .dta files using the Python scripts, these files append the individual years for each survey together and then clean the resulting datasets.</p>
+
+<h3>
+<a id="bugs" class="anchor" href="#bugs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bugs</h3>
+
+<p>If you notice any bugs or errors, please notify me at [<a href="mailto:msnaven@ucdavis.edu">msnaven@ucdavis.edu</a>](mailto:<a href="mailto:msnaven@ucdavis.edu">msnaven@ucdavis.edu</a>].</p>
       </section>
     </div>
 
