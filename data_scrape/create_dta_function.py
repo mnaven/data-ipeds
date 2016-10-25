@@ -10,7 +10,7 @@ __copyright__ = "Copyright 2016, Matthew Naven"
 __email__ = "msnaven@ucdavis.edu"
 
 
-def ipeds_create_dta(do_file_path, stata_executable_path):
+def ipeds_create_dta(do_file_path, stata_executable_path=None):
     do_files_year_folder_path = os.path.dirname(do_file_path)
     log_files_year_folder_path = str.replace(do_files_year_folder_path, "do_files", "log_files")
     if not os.path.exists(log_files_year_folder_path):
