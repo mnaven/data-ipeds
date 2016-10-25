@@ -10,7 +10,7 @@ __copyright__ = "Copyright 2016, Matthew Naven"
 __email__ = "msnaven@ucdavis.edu"
 
 
-ipeds_directory = "/Users/Naven/Documents/Research/data/ipeds"
+ipeds_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.path.pardir)
 log_files_directory = os.path.join(ipeds_directory, "log_files")
 error_log_files = list()
 

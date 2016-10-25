@@ -1,7 +1,15 @@
+#!/usr/bin/env python
+
+"""Runs all of the Python scripts necessary to create dta files from the raw IPEDS csv files"""
+
 import os
 
-__author__ = 'Naven'
+__author__ = "Matthew Naven"
+__copyright__ = "Copyright 2016, Matthew Naven"
+__email__ = "msnaven@ucdavis.edu"
 
+
+ipeds_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.path.pardir)
 
 # Delete Extras
 os.chdir("/Users/Naven/Documents/Research/data/ipeds/data_scrape")

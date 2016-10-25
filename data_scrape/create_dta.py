@@ -13,7 +13,7 @@ __copyright__ = "Copyright 2016, Matthew Naven"
 __email__ = "msnaven@ucdavis.edu"
 
 
-ipeds_directory = "/Users/Naven/Documents/Research/data/ipeds"
+ipeds_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.path.pardir)
 do_files_directory = os.path.join(ipeds_directory, "do_files")
 stata_executable_path = ""  # PASTE THE FULL PATH TO THE STATA EXECUTABLE FILE BETWEEN THE DOUBLE QUOTES IF STATA IS NOT INSTALLED IN THE DEFAULT LOCATION
 
