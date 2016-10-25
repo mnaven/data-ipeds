@@ -3,6 +3,7 @@
 """Changes the insheet data file path to match the local data file path in a zipped IPEDS insheet file"""
 
 import os
+import re
 from zip_contains_do_file_function import zip_contains_do_file
 from replace_insheet_data_path_zip_function import ipeds_replace_insheet_data_path_zip
 
@@ -15,13 +16,15 @@ ipeds_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pa
 do_files_directory = os.path.join(ipeds_directory, "do_files")
 
 for directory_path, directory_names_list, file_names_list in os.walk(do_files_directory):
-    for file_name in file_names_list:
-        print("Checking if " + file_name + " is a zip file")
-        if file_name.endswith(".zip"):
-            print(file_name + " is a zip file")
-            print("Checking if " + file_name + " contains a do file")
-            zip_file_path = os.path.join(directory_path, file_name)
-            if zip_contains_do_file(zip_file_path):
-                print(file_name + " contains a do file")
-                print("Replacing the insheet data path in " + file_name)
-                ipeds_replace_insheet_data_path_zip(zip_file_path)
+    directory_name = os.path.basename(directory_path)
+    if re.fullmatch("[0-9]{4}", directory_name):
+        for file_name in file_names_list:
+            print("Checking if " + file_name + " is a zip file")
+            if file_name.endswith(".zip"):
+                print(file_name + " is a zip file")
+                print("Checking if " + file_name + " contains a do file")
+                zip_file_path = os.path.join(directory_path, file_name)
+                if zip_contains_do_file(zip_file_path):
+                    print(file_name + " contains a do file")
+                    print("Replacing the insheet data path in " + file_name)
+                    ipeds_replace_insheet_data_path_zip(zip_file_path)

@@ -3,8 +3,6 @@
 """Creates a dta file from an unzipped IPEDS csv file"""
 
 import os
-import sys
-import glob
 import re
 from create_dta_function import ipeds_create_dta
 
@@ -19,13 +17,15 @@ stata_executable_path = ""  # PASTE THE FULL PATH TO THE STATA EXECUTABLE FILE B
 
 # Go through all the files and folders contained in the directory, now including the unzipped files
 for directory_path, directory_names_list, file_names_list in os.walk(do_files_directory):
-    for file_name in file_names_list:
-        print("Checking if " + file_name + " is a do file")
-        if file_name.endswith(".do"):
-            print(file_name + " is a do file")
-            print("Creating a dta file with Stata using the do file " + file_name)
-            do_file_path = os.path.join(directory_path, file_name)
-            if stata_executable_path == "":
-                ipeds_create_dta(do_file_path)
-            else:
-                ipeds_create_dta(do_file_path, stata_executable_path)
+    directory_name = os.path.basename(directory_path)
+    if re.fullmatch("[0-9]{4}", directory_name):
+        for file_name in file_names_list:
+            print("Checking if " + file_name + " is a do file")
+            if file_name.endswith(".do"):
+                print(file_name + " is a do file")
+                print("Creating a dta file with Stata using the do file " + file_name)
+                do_file_path = os.path.join(directory_path, file_name)
+                if stata_executable_path == "":
+                    ipeds_create_dta(do_file_path)
+                else:
+                    ipeds_create_dta(do_file_path, stata_executable_path)
