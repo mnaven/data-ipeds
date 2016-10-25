@@ -41,7 +41,7 @@
 
 <p>You will need <a href="https://www.python.org/downloads/">Python</a> and Stata to run the code. Download either a zip or tarball of the code by clicking the download link at the top of the page, then unzip/unpack this file, which I will refer to as the <em>IPEDS directory</em>. Within the <em>IPEDS directory</em>, create a folder named <em>downloads</em>.</p>
 
-<p>The current version as is only works for Mac and Linux, although I am in the process of adding Windows compatibility. The primary difficulty in making the scripts multi-platform is the location of Stata in the file system. If you use Windows and know the file path of the Stata executable file, then you can replace <em>ipeds_create_dta(do_file_path, stata_gui_executable_path)</em> in the <em>create_dta.py</em> file with <em>ipeds_create_dta(do_file_path, <strong>"Stata Executable Path"</strong>)</em>, where <em>Stata Executable Path</em> is the file path of the Stata.exe file (the double quotes are necessary).</p>
+<p>The current version as is only works for Mac, Windows, and Linux if Stata is installed in the default directory with the default name. If you installed Stata into a directory or under a name that is not the default, then you will need to paste the absolute path to the Stata executable file between the double quotes of the <em>stata_executable_path</em> variable in the <em>create_dta.py</em> file.</p>
 
 <h2>
 <a id="downloading-the-ipeds-files" class="anchor" href="#downloading-the-ipeds-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Downloading the IPEDS Files</h2>
