@@ -15,6 +15,10 @@ __email__ = "msnaven@ucdavis.edu"
 
 def ipeds_create_dta(do_file_path, stata_executable_path=None):
     do_files_year_folder_path = os.path.dirname(do_file_path)
+    clean_data_year_folder_path = str.replace(do_files_year_folder_path, "do_files", "clean_data")
+    if not os.path.exists(clean_data_year_folder_path):
+        print("Creating folder " + clean_data_year_folder_path)
+        os.makedirs(clean_data_year_folder_path)
     log_files_year_folder_path = str.replace(do_files_year_folder_path, "do_files", "log_files")
     if not os.path.exists(log_files_year_folder_path):
         print("Creating folder " + log_files_year_folder_path)
