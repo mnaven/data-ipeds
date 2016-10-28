@@ -11,7 +11,7 @@ __email__ = "msnaven@ucdavis.edu"
 
 def ipeds_change_insheet_directory(do_file_path):
     do_files_year_folder_path = os.path.dirname(do_file_path)
-    raw_data_year_folder_path = str.replace(do_files_year_folder_path, "do_files", "raw_data")
+    clean_data_year_folder_path = str.replace(do_files_year_folder_path, "do_files", "clean_data")
     do_file_name = os.path.basename(do_file_path)
 
     cd_added = None
@@ -31,8 +31,8 @@ def ipeds_change_insheet_directory(do_file_path):
     elif not cd_added:
         print("Insheet directory not already changed with Python in " + do_file_name)
         with open(do_file_path, 'w', encoding='iso-8859-1') as edited_do_file:
-            print("Adding cd " + raw_data_year_folder_path + " to " + do_file_name)
-            do_file_text = 'cd "' + raw_data_year_folder_path + '"' + '\n' + do_file_text
+            print("Adding cd " + clean_data_year_folder_path + " to " + do_file_name)
+            do_file_text = 'cd "' + clean_data_year_folder_path + '"' + '\n' + do_file_text
             print("Marking " + do_file_name + " as edited")
             do_file_text = "* directory changed with python" + "\n" + do_file_text
             print("Saving " + do_file_name)

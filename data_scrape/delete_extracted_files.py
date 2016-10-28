@@ -19,7 +19,7 @@ for directory_path, directory_names_list, file_names_list in os.walk(ipeds_direc
         for file_name in file_names_list:
             file_path = os.path.join(directory_path, file_name)
             # Check to see if the file came from a zipped file
-            print("Checking if " + file_name + " is a do, csv, or html file")
+            print("Checking if " + file_name + " is a do, csv, html, or codebook zip file")
 
             if file_name.endswith(".dta"):
                 print(file_name + " is a dta file")
@@ -28,6 +28,13 @@ for directory_path, directory_names_list, file_names_list in os.walk(ipeds_direc
             elif file_name.endswith(".log"):
                 print(file_name + " is a log file")
                 print("Keeping " + file_name)
+
+            elif file_name.endswith(".zip"):
+                print(file_name + " is a zip file")
+                if os.path.dirname(directory_path) == "codebooks":
+                    print("Deleting " + file_name)
+                else:
+                    print("Keeping " + file_name)
 
             elif file_name.endswith(".do"):
                 print(file_name + " is a do file")

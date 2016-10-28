@@ -11,6 +11,8 @@ __email__ = "msnaven@ucdavis.edu"
 
 
 def ipeds_replace_insheet_data_path(do_file_path):
+    do_files_year_folder_path = os.path.dirname(do_file_path)
+    raw_data_year_folder_path = str.replace(do_files_year_folder_path, "do_files", "raw_data")
     do_file_name = os.path.basename(do_file_path)
 
     path_replaced = None
@@ -31,7 +33,7 @@ def ipeds_replace_insheet_data_path(do_file_path):
         print("Insheet data path not already replaced with Python in " + do_file_name)
         with open(do_file_path, 'w', encoding='iso-8859-1') as edited_do_file:
             print("Deleting original insheet file path in " + do_file_name)
-            do_file_text = re.sub(r'insheet using .*\\', 'insheet using "', do_file_text)
+            do_file_text = re.sub(r'insheet using .*\\', 'insheet using "' + raw_data_year_folder_path + os.path.sep, do_file_text)
             print("Marking " + do_file_name + " as edited")
             do_file_text = "* insheet data path replaced with python" + "\n" + do_file_text
             print("Saving " + do_file_name)

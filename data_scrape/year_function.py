@@ -35,7 +35,7 @@ def ipeds_year(file_path):
             year = four_digits
 
         # Accounts for four digits that denote two consecutive years
-        elif int(four_digits[0:2]) == int(four_digits[-2:]) - 1:
+        elif int(four_digits[0:2]) == int(four_digits[-2:]) - 1 or (four_digits[0:2] == "99" and four_digits[-2:]) == "00":
             two_digit_year = four_digits[-2:]
             for four_digit_year in all_ipeds_years:
                 if two_digit_year == four_digit_year[-2:]:
