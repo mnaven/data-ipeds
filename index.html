@@ -34,12 +34,12 @@
         <h1>
 <a id="using-the-ipeds-data" class="anchor" href="#using-the-ipeds-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using the IPEDS Data</h1>
 
-<p>While the IPEDS survey data contains a wealth of information, the data provided on the IPEDS website is not very user-friendly. This project provides files that create long form panel Stata datasets of IPEDS surveys for use in academic research.</p>
+<p>While the IPEDS survey data contains a wealth of information, the data provided on the IPEDS website is not very user-friendly. This project provides files that create long form panel Stata datasets of IPEDS surveys for use in academic research. The files are free to download, use, and edit as you wish. If they have been helpful in furthering your research, a citation would be appreciated.</p>
 
 <h2>
 <a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h2>
 
-<p>You will need <a href="https://www.python.org/downloads/">Python 3+</a> (the scripts will NOT run on Python 2) and Stata to run the code. Download either a zip or tarball of the code by clicking the download link at the top of the page, then unzip/unpack this file, which I will refer to as the <em>IPEDS directory</em>. Within the <em>IPEDS directory</em>, create a folder named <em>downloads</em>.</p>
+<p>You will need <a href="https://www.python.org/downloads/">Python 3+</a> (the scripts will NOT run in Python 2) and Stata to run the code. Download either a zip or tarball of the code by clicking the download link at the top of the page, then unzip/unpack this file, which I will refer to as the <em>IPEDS directory</em>. If the name of the <em>IPEDS directory</em> has spaces in any part of its absolute path, then Stata will incorrectly name all of the log files to the word before the first space, so I recommend naming the <em>IPEDS directory</em> without spaces and choosing a location in which the names of the folders containing the <em>IPEDS directory</em> contain no spaces. Within the <em>IPEDS directory</em>, create a folder named <em>downloads</em>.</p>
 
 <p>The current version as is only works for Mac, Windows, and Linux if Stata is installed in the default directory with the default name. If you installed Stata into a directory or under a name that is not the default, then you will need to paste the absolute path to the Stata executable file between the double quotes of the <em>stata_executable_path</em> variable in the <em>create_dta.py</em> file.</p>
 
@@ -51,12 +51,12 @@
 <h2>
 <a id="code-instructions" class="anchor" href="#code-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code Instructions</h2>
 
-<p>Open the <em>run_all.py</em> file in the <em>data_scrape</em> folder using an IDE such as <a href="https://www.jetbrains.com/pycharm/download/">Pycharm</a> or IDLE (included with Python) and click <em>run</em>. This will execute all of the Python scripts necessary to create individual year Stata datasets for each survey. Then run the do files in the <em>do_files</em> folder to create panel Stata datasets for each survey.</p>
+<p>Open the <em>run_all.py</em> file in the <em>data_scrape</em> folder using an IDE such as <a href="https://www.jetbrains.com/pycharm/download/">Pycharm</a> or IDLE (included with Python) running Python 3+ and click <em>run</em>. This will execute all of the Python scripts necessary to create individual year Stata datasets for each survey. Then run the do files in the <em>do_files</em> folder to create panel Stata datasets for each survey.</p>
 
 <h3>
 <a id="python-files" class="anchor" href="#python-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Python Files</h3>
 
-<p>These files use Python to facilitate the organization and creation of raw (uncleaned) Stata .dta files for each academic year from the IPEDS Data Center Complete Data Files. These individual year files can then be appended to create Stata .dta files that contain all years of data for each survey. Each script contains a variable named <em>ipeds_directory</em> that must be changed to the folder path of where you would like to store the IPEDS data. As mentioned above, the scripts operate under the assumption that the <em>ipeds_directory</em> contains a subfolder named <em>downloads</em> to which all IPEDS files are originally downloaded.</p>
+<p>These files use Python to facilitate the organization and creation of raw (uncleaned) Stata .dta files for each academic year from the IPEDS Data Center Complete Data Files. These individual year files can then be appended to create Stata .dta files that contain all years of data for each survey. As mentioned above, the scripts operate under the assumption that the <em>IPEDS directory</em> contains a subfolder named <em>downloads</em> to which all IPEDS files are originally downloaded.</p>
 
 <p>The project scripts combine to delete duplicate/SPSS/SAS files, sort data dictionaries to the corresponding year within the codebooks folder, sort .do files that create .dta files to the corresponding year within the do_files folder, sort raw .csv files to the corresponding year within the raw_data folder, change the directory in each do file to the <em>ipeds_directory</em> folder, remove the default insheet file path which corresponds to a path local to IPEDS, add a capture command to each label command in the .do files (some files have incorrect labels or illegal characters), unzip all the files, create .dta files from the raw .csv files, and then delete all unnecessary unzipped files. A list of files for which a .dta file could not be successfully created from the raw .csv file is also created.</p>
 
