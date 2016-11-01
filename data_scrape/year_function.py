@@ -54,6 +54,6 @@ def ipeds_year(file_path):
     elif file_name.startswith("Pub_studentCount"):
         year = "1999"
     elif file_name.startswith("Pub_FinancialAid"):
-        year == "1999"
+        year = "1999"
 
     return year
