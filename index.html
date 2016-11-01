@@ -39,26 +39,41 @@
 <h2>
 <a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h2>
 
-<p>You will need <a href="https://www.python.org/downloads/">Python 3+</a> (the scripts will NOT run in Python 2) and Stata to run the code. Download either a zip or tarball of the code by clicking the download link at the top of the page, then unzip/unpack this file, which I will refer to as the <em>IPEDS directory</em>. If the name of the <em>IPEDS directory</em> has spaces in any part of its absolute path, then Stata will incorrectly name all of the log files to the word before the first space, so I recommend naming the <em>IPEDS directory</em> without spaces and choosing a location in which the names of the folders containing the <em>IPEDS directory</em> contain no spaces. Within the <em>IPEDS directory</em>, create a folder named <em>downloads</em>.</p>
+<p>You will need <a href="https://www.python.org/downloads/">Python 3+</a> (the scripts will NOT run in Python 2) and Stata to run the code. Download either a zip or tarball of the code by clicking the download link at the top of the page then unzip/unpack this file which should contain one folder. I will refer to this folder as the <em>IPEDS directory</em>. If the name of the <em>IPEDS directory</em> has spaces in any part of its absolute path (such as <em>/Users/Naven/My Documents/Research/Data/IPEDS</em>), then Stata will incorrectly name all of the log files to the word before the first space (in this case <em>My.log</em>) so I recommend naming the <em>IPEDS directory</em> without spaces and choosing a location in which the names of the folders containing the <em>IPEDS directory</em> also have no spaces (such as <em>/Users/Naven/Documents/Research/Data/IPEDS</em>). Within the <em>IPEDS directory</em>, create a folder named <em>downloads</em>.</p>
 
 <p>The current version as is only works for Mac, Windows, and Linux if Stata is installed in the default directory with the default name. If you installed Stata into a directory or under a name that is not the default, then you will need to paste the absolute path to the Stata executable file between the double quotes of the <em>stata_executable_path</em> variable in the <em>create_dta.py</em> file.</p>
 
 <h2>
 <a id="downloading-the-ipeds-files" class="anchor" href="#downloading-the-ipeds-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Downloading the IPEDS Files</h2>
 
-<p>The raw data can be downloaded from the <a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx">IPEDS Data Center Complete Data Files</a>. My preferred method to download all of the files simultaneously is to use the Firefox extension <a href="http://www.downthemall.net/">DownThemAll!</a> with the archives filter. Save all of the files to the <em>IPEDS directory/downloads</em> folder.</p>
+<p>The raw data to create the datasets can be downloaded from the <a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx">IPEDS Data Center Complete Data Files</a>. My preferred method to download all of the files simultaneously is to use the Firefox extension <a href="http://www.downthemall.net/">DownThemAll!</a> with the archives filter. Save all of the files to the <em>IPEDS directory/downloads</em> folder.</p>
 
 <h2>
 <a id="code-instructions" class="anchor" href="#code-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code Instructions</h2>
 
-<p>Open the <em>run_all.py</em> file in the <em>data_scrape</em> folder using an IDE such as <a href="https://www.jetbrains.com/pycharm/download/">Pycharm</a> or IDLE (included with Python) running Python 3+ and click <em>run</em>. This will execute all of the Python scripts necessary to create individual year Stata datasets for each survey. Then run the do files in the <em>do_files</em> folder to create panel Stata datasets for each survey.</p>
+<p>Open the <em>run_all.py</em> file in the <em>data_scrape</em> folder using an IDE such as <a href="https://www.jetbrains.com/pycharm/download/">Pycharm</a> or IDLE (included with Python) running Python 3+, and then click <em>run</em>. This will execute all of the Python scripts necessary to create individual year Stata datasets for each survey. Next run the do files in the <em>do_files</em> folder to create panel Stata datasets for each survey.</p>
+
+<h2>
+<a id="types-of-files" class="anchor" href="#types-of-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Types of Files</h2>
 
 <h3>
 <a id="python-files" class="anchor" href="#python-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Python Files</h3>
 
 <p>These files use Python to facilitate the organization and creation of raw (uncleaned) Stata .dta files for each academic year from the IPEDS Data Center Complete Data Files. These individual year files can then be appended to create Stata .dta files that contain all years of data for each survey. As mentioned above, the scripts operate under the assumption that the <em>IPEDS directory</em> contains a subfolder named <em>downloads</em> to which all IPEDS files are originally downloaded.</p>
 
-<p>The project scripts combine to delete duplicate/SPSS/SAS files, sort data dictionaries to the corresponding year within the codebooks folder, sort .do files that create .dta files to the corresponding year within the do_files folder, sort raw .csv files to the corresponding year within the raw_data folder, change the directory in each do file to the <em>ipeds_directory</em> folder, remove the default insheet file path which corresponds to a path local to IPEDS, add a capture command to each label command in the .do files (some files have incorrect labels or illegal characters), unzip all the files, create .dta files from the raw .csv files, and then delete all unnecessary unzipped files. A list of files for which a .dta file could not be successfully created from the raw .csv file is also created.</p>
+<p>The project scripts do the following:
+1. Delete duplicate/SPSS/SAS files
+2. Sort data dictionaries to the corresponding year within the <em>codebooks</em> folder
+3. Sort .do files that create .dta files to the corresponding year within the <em>do_files</em> folder
+4. Sort raw .csv files to the corresponding year within the <em>raw_data</em> folder
+5. Change the directory in each do file to the <em>clean_data</em> folder
+6. Replace the default insheet file path which corresponds to a path local to IPEDS servers to the <em>raw_data</em> folder
+7. Add a capture command to each label command in the .do files (some files have incorrect labels or illegal characters)
+8. Unzip all the files
+9. Create .dta files from the raw .csv files
+10. Delete all unnecessary unzipped files</p>
+
+<p>A list of files for which a .dta file could not be successfully created from the raw .csv file is also created.</p>
 
 <p>A README file describes the order in which each script should be run, although the <em>run_all.py</em> script will automatically run the scripts in the correct order. The IPEDS files are originally downloaded as zipped files, however the project also includes functions and scripts that will edit unzipped files in case the files have already been unzipped or if edits only need to be made to an individual file.</p>
 
