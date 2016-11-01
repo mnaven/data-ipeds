@@ -63,10 +63,10 @@
 
 <p>These files use Python to facilitate the organization and creation of raw (uncleaned) Stata .dta files for each academic year from the IPEDS Data Center Complete Data Files. These individual year files can then be appended to create Stata .dta files that contain all years of data for each survey. As mentioned above, the scripts operate under the assumption that the <em>IPEDS directory</em> contains a subfolder named <em>downloads</em> to which all IPEDS files are originally downloaded.</p>
 
-<p>The project scripts do the following:
-1. Delete duplicate/SPSS/SAS files</p>
+<p>The project scripts do the following:</p>
 
 <ol>
+<li><p>Delete duplicate/SPSS/SAS files</p></li>
 <li><p>Sort data dictionaries to the corresponding year within the <em>codebooks</em> folder</p></li>
 <li><p>Sort .do files that create .dta files to the corresponding year within the <em>do_files</em> folder</p></li>
 <li><p>Sort raw .csv files to the corresponding year within the <em>raw_data</em> folder</p></li>
@@ -87,8 +87,8 @@
 
 <p>After creating individual year .dta files using the Python scripts, these files append the individual years for each survey together and then clean the resulting datasets.</p>
 
-<h3>
-<a id="bugs" class="anchor" href="#bugs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bugs</h3>
+<h2>
+<a id="bugs" class="anchor" href="#bugs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bugs</h2>
 
 <p>If you notice any bugs or errors, please notify me at <a href="mailto:msnaven@ucdavis.edu">msnaven@ucdavis.edu</a>.</p>
       </section>
