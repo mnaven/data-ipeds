@@ -13,7 +13,7 @@ if c(hostname)=="sapper" {
 }
 cd $ipeds
 
-log using log_files/graduation_rate/graduation_rate_clean.log, replace
+log using log_files/graduation_rate/clean_graduation_rate.log, replace
 timer on 1
 
 local weights "gr_cohort_\`race'_tot prop_\`race'_tot_state_cohort"

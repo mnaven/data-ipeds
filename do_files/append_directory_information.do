@@ -21,7 +21,7 @@ if c(hostname)=="sapper" {
 }
 cd `home'
 
-log using log_files/clean_directory_information.log, replace
+log using log_files/append_directory_information.log, replace
 timer on 1
 
 

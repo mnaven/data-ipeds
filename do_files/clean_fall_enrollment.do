@@ -13,7 +13,7 @@ if c(hostname)=="sapper" {
 }
 cd $ipeds
 
-log using log_files/fall_enrollment/fall_enrollment_clean.log, replace
+log using log_files/fall_enrollment/clean_fall_enrollment.log, replace
 timer on 1
 
 local bases "tot res"

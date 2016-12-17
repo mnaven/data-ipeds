@@ -13,7 +13,7 @@ if c(hostname)=="sapper" {
 }
 cd $ipeds
 
-log using log_files/institutional_characteristics_clean.log, replace
+log using log_files/clean_institutional_characteristics.log, replace
 timer on 1
 
 
