@@ -1,35 +1,55 @@
-version 12.1
+version 14.1
 cap log close
 clear all
+graph drop _all
 set more off
+set varabbrev off
+set graphics off
+set scheme s1color
 
-global home /Users/Naven/Google Drive/data/ipeds/data_scrape/merge_dta_files
-global raw /Users/Naven/Google Drive/data/ipeds/raw_data
-global clean /Users/Naven/Google Drive/data/ipeds/clean_data
+**** First created by Matthew Naven on October 7, 2016
 
-log using "$home/institutional_characteristics.log", replace
+if c(machine_type)=="Macintosh (Intel 64-bit)" & c(username)=="Naven" {
+	local home /Users/Naven/Documents/Research/data/ipeds
+	local raw `home'/raw_data
+	local clean `home'/clean_data
+}
+if c(hostname)=="sapper" {
+	local home /home/users/navenm.AD3/research/data/ipeds
+	local raw `home'/raw_data
+	local clean `home'/clean_data
+}
+cd `home'
+
+log using log_files/clean_institutional_characteristics.log, replace
+timer on 1
+
+/*
+This file appends all the individual years of the institutional characteristics
+datasets from IPEDS and then cleans the resulting dataset.
+*/
 
 
 * 1980
-cd "$raw/1980"
+cd `raw'/1980
 use dct_ic1980.dta, clear
 gen year = 1980
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1980
 save `ic_1980'
 
 * 1984
-cd "$raw/1984"
+cd `raw'/1984
 use dct_ic1984.dta, clear
 tostring gentele, replace
 tostring fdgrmoyr, replace
 gen year = 1984
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1984
 save `ic_1984'
 
 * 1985 (no data by race)
-cd "$raw/1985"
+cd `raw'/1985
 use dct_ic1985.dta, clear
 tostring gentele, replace
 tostring fdgrmoyr, replace
@@ -37,12 +57,12 @@ decode sequen, gen(temp_sequen)
 drop sequen
 rename temp_sequen sequen
 gen year = 1985
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1985
 save `ic_1985'
 
 * 1986
-cd "$raw/1986"
+cd `raw'/1986
 use dct_ic1986_a.dta, clear
 drop if unitid == 247719
 tempfile dct_ic1986_a_unique
@@ -61,12 +81,12 @@ decode sequen, gen(temp_sequen)
 drop sequen
 rename temp_sequen sequen
 gen year = 1986
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1986
 save `ic_1986'
 
 * 1987 (no data by race)
-cd "$raw/1987"
+cd `raw'/1987
 use dct_ic1987_a.dta, clear
 merge 1:1 unitid using dct_ic1987_b.dta
 drop _merge
@@ -74,12 +94,12 @@ drop _merge
 destring zip, replace ignore("-")
 tostring gentele, replace
 gen year = 1987
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1987
 save `ic_1987'
 
 * 1988
-cd "$raw/1988"
+cd `raw'/1988
 use dct_ic1988_a.dta, clear
 merge 1:1 unitid using dct_ic1988_b.dta
 drop _merge
@@ -90,12 +110,12 @@ encode formrt, gen(temp_formrt) label(label_formrt)
 drop formrt
 rename temp_formrt formrt
 gen year = 1988
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1988
 save `ic_1988'
 
 * 1989 (no data by race)
-cd "$raw/1989"
+cd `raw'/1989
 use dct_ic1989_a.dta, clear
 merge 1:1 unitid using dct_ic1989_b.dta
 drop _merge
@@ -103,12 +123,12 @@ tostring gentele, replace
 destring ffmin, replace ignore(*)
 destring ffmax, replace ignore(*)
 gen year = 1989
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1989
 save `ic_1989'
 
 * 1990
-cd "$raw/1990"
+cd `raw'/1990
 use dct_ic90hd.dta, clear
 merge 1:1 unitid using dct_ic90abce.dta
 drop _merge
@@ -116,12 +136,12 @@ merge 1:1 unitid using dct_ic90d.dta
 drop _merge
 tostring gentele, replace
 gen year = 1990
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1990
 save `ic_1990'
 
 * 1991
-cd "$raw/1991"
+cd `raw'/1991
 use dct_ic1991_hdr.dta, clear
 merge 1:1 unitid using dct_ic1991_ab.dta
 drop _merge
@@ -139,12 +159,12 @@ drop _merge
 destring zip, replace ignore("-&")
 tostring gentele, replace
 gen year = 1991
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1991
 save `ic_1991'
 
 * 1992
-cd "$raw/1992"
+cd `raw'/1992
 use dct_ic1992_a.dta, clear
 merge 1:1 unitid using dct_ic1992_b.dta
 drop _merge
@@ -165,34 +185,34 @@ if missing(agenst) {
 	replace agenst = "" if agenst=="."
 }
 gen year = 1992
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1992
 save `ic_1992'
 
 * 1993
-cd "$raw/1993"
+cd `raw'/1993
 use dct_ic1993_a.dta, clear
 merge 1:1 unitid using dct_ic1993_b.dta
 drop _merge
 tostring gentele, replace
 gen year = 1993
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1993
 save `ic_1993'
 
 * 1994
-cd "$raw/1994"
+cd `raw'/1994
 use dct_ic1994_a.dta, clear
 merge 1:1 unitid using dct_ic1994_b.dta
 drop _merge
 tostring gentele, replace
 gen year = 1994
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1994
 save `ic_1994'
 
 * 1995
-cd "$raw/1995"
+cd `raw'/1995
 use dct_ic9596_a.dta, clear
 merge 1:1 unitid using dct_ic9596_b.dta
 drop _merge
@@ -206,12 +226,12 @@ if missing(imp3) {
 	replace imp3 = "" if imp3=="."
 }
 gen year = 1995
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1995
 save `ic_1995'
 
 * 1996
-cd "$raw/1996"
+cd `raw'/1996
 use dct_ic9697_a.dta, clear
 merge 1:1 unitid using dct_ic9697_b.dta
 drop _merge
@@ -222,12 +242,12 @@ encode formrt, gen(temp_formrt) label(label_formrt)
 drop formrt
 rename temp_formrt formrt
 gen year = 1996
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1996
 save `ic_1996'
 
 * 1997
-cd "$raw/1997"
+cd `raw'/1997
 use dct_ic9798_hdr.dta, clear
 merge 1:1 unitid using dct_ic9798_ab.dta
 drop _merge
@@ -243,12 +263,12 @@ encode formrt, gen(temp_formrt) label(label_formrt)
 drop formrt
 rename temp_formrt formrt
 gen year = 1997
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1997
 save `ic_1997'
 
 * 1998
-cd "$raw/1998"
+cd `raw'/1998
 use dct_ic98hdac.dta, clear
 merge 1:1 unitid using dct_ic98_ab.dta
 drop _merge
@@ -308,12 +328,12 @@ foreach var in xappfeeu xappfeeg xappfeep xciptui1 xcipsup1 xciplgt1 xciptui2 //
 		}
 }
 gen year = 1998
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1998
 save `ic_1998'
 
 * 1999
-cd "$raw/1999"
+cd `raw'/1999
 use dct_ic99_hd.dta, clear
 merge 1:1 unitid using dct_ic99abcf.dta
 drop _merge
@@ -336,12 +356,12 @@ drop admtele
 rename temp_admtele admtele
 *destring closedat, replace ignore("JMTS")
 gen year = 1999
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_1999
 save `ic_1999'
 
 * 2000
-cd "$raw/2000"
+cd `raw'/2000
 use dct_fa2000hd.dta, clear
 merge 1:1 unitid using dct_ic2000.dta
 drop _merge
@@ -361,12 +381,12 @@ decode closedat, gen(temp_closedat)
 drop closedat
 rename temp_closedat closedat
 gen year = 2000
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2000
 save `ic_2000'
 
 * 2001
-cd "$raw/2001"
+cd `raw'/2001
 use dct_fa2001hd.dta, clear
 merge 1:1 unitid using dct_ic2001.dta
 drop _merge
@@ -464,12 +484,12 @@ foreach var in xchg1py1 xchg1py2 xchg1py3 xchg4py1 xchg4py2 xchg4py3 xchg5py1 //
 		}
 }
 gen year = 2001
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2001
 save `ic_2001'
 
 * 2002
-cd "$raw/2002"
+cd `raw'/2002
 use dct_hd2002.dta, clear
 merge 1:1 unitid using dct_ic2002.dta
 drop _merge
@@ -481,12 +501,12 @@ drop _merge
 destring zip, replace ignore("-")
 *destring closedat, replace ignore("/JMT")
 gen year = 2002
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2002
 save `ic_2002'
 
 * 2003
-cd "$raw/2003"
+cd `raw'/2003
 use dct_hd2003.dta, clear
 merge 1:1 unitid using dct_ic2003.dta
 drop _merge
@@ -498,12 +518,12 @@ drop _merge
 destring zip, replace ignore("-")
 *destring closedat, replace ignore("/")
 gen year = 2003
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2003
 save `ic_2003'
 
 * 2004
-cd "$raw/2004"
+cd `raw'/2004
 use dct_hd2004.dta, clear
 merge 1:1 unitid using dct_flags2004.dta
 drop _merge
@@ -607,12 +627,12 @@ foreach var in xchg1py1 xchg1py2 xchg1py3 xchg4py1 xchg4py2 xchg4py3 xchg5py1 //
 		}
 }
 gen year = 2004
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2004
 save `ic_2004'
 
 * 2005
-cd "$raw/2005"
+cd `raw'/2005
 use dct_hd2005.dta, clear
 merge 1:1 unitid using dct_flags2005.dta
 drop _merge
@@ -627,12 +647,12 @@ drop _merge
 *replace zip = regexs(1) if regexm(zip, "([0-9][0-9][0-9][0-9][0-9])-?([0-9][0-9][0-9][0-9])")
 destring zip, replace ignore("-")
 gen year = 2005
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2005
 save `ic_2005'
 
 * 2006
-cd "$raw/2006"
+cd `raw'/2006
 use dct_hd2006.dta, clear
 merge 1:1 unitid using dct_ic2006.dta
 drop _merge
@@ -654,12 +674,12 @@ destring ein, replace ignore("-")
 replace ein = -1 if ein_negative1==1
 drop ein_negative1
 gen year = 2006
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2006
 save `ic_2006'
 
 * 2007
-cd "$raw/2007"
+cd `raw'/2007
 use dct_hd2007.dta, clear
 merge 1:1 unitid using dct_ic2007.dta
 drop _merge
@@ -679,12 +699,12 @@ destring ein, replace ignore("-")
 replace ein = -1 if ein_negative1==1
 drop ein_negative1
 gen year = 2007
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2007
 save `ic_2007'
 
 * 2008
-cd "$raw/2008"
+cd `raw'/2008
 use dct_hd2008.dta, clear
 merge 1:1 unitid using dct_ic2008.dta
 drop _merge
@@ -701,12 +721,12 @@ destring ein, replace ignore("-P.")
 replace ein = -1 if ein_negative1==1
 drop ein_negative1
 gen year = 2008
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2008
 save `ic_2008'
 
 * 2009
-cd "$raw/2009"
+cd `raw'/2009
 use dct_hd2009.dta, clear
 merge 1:1 unitid using dct_ic2009_rv.dta
 drop _merge
@@ -813,12 +833,12 @@ foreach var in xtuit1 xfee1 xhrchg1 xcmpfee1 xtuit2 xfee2 xhrchg2 xcmpfee2 ///
 		}
 }
 gen year = 2009
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2009
 save `ic_2009'
 
 * 2010
-cd "$raw/2010"
+cd `raw'/2010
 use dct_hd2010.dta, clear
 merge 1:1 unitid using dct_ic2010_rv.dta
 drop _merge
@@ -968,12 +988,12 @@ foreach var in xtuit1 xfee1 xhrchg1 xcmpfee1 xtuit2 xfee2 xhrchg2 xcmpfee2 ///
 		}
 }
 gen year = 2010
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2010
 save `ic_2010'
 
 * 2011
-cd "$raw/2011"
+cd `raw'/2011
 use dct_hd2011.dta, clear
 merge 1:1 unitid using dct_ic2011.dta
 drop _merge
@@ -1121,12 +1141,12 @@ foreach var in xtuit1 xfee1 xhrchg1 xcmpfee1 xtuit2 xfee2 xhrchg2 xcmpfee2 ///
 		}
 }
 gen year = 2011
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2011
 save `ic_2011'
 
 * 2012
-cd "$raw/2012"
+cd `raw'/2012
 use dct_hd2012.dta, clear
 merge 1:1 unitid using dct_ic2012.dta
 drop _merge
@@ -1273,12 +1293,12 @@ foreach var in xtuit1 xfee1 xhrchg1 xcmpfee1 xtuit2 xfee2 xhrchg2 xcmpfee2 ///
 }
 tostring opeid, replace
 gen year = 2012
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2012
 save `ic_2012'
 
 * 2013
-cd "$raw/2013"
+cd `raw'/2013
 use dct_hd2013.dta, clear
 merge 1:1 unitid using dct_ic2013.dta
 drop _merge
@@ -1423,12 +1443,12 @@ foreach var in xtuit1 xfee1 xhrchg1 xtuit2 xfee2 xhrchg2 xtuit3 xfee3 xhrchg3 //
 		}
 }
 gen year = 2013
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2013
 save `ic_2013'
 
-* 2013
-cd "$raw/2014"
+* 2014
+cd `raw'/2014
 use dct_hd2014.dta, clear
 merge 1:1 unitid using dct_ic2014.dta
 drop _merge
@@ -1573,12 +1593,12 @@ foreach var in xtuit1 xfee1 xhrchg1 xtuit2 xfee2 xhrchg2 xtuit3 xfee3 xhrchg3 //
 		}
 }
 gen year = 2014
-label variable year "Year"
+label variable year "Year of Fall Semester"
 tempfile ic_2014
 save `ic_2014'
 /*
 * 2015
-cd "$raw/2015"
+cd `raw'/2015
 use , clear
 merge 1:1 unitid using 
 *keep if _merge == 3
@@ -1602,28 +1622,22 @@ merge 1:m unitid using
 *keep if _merge == 3
 drop _merge
 gen year = 2015
-label variable year "Year"
+label variable year "Year of Fall Semester"
 *compress
 tempfile ic_2015
 save `ic_2015'
 */
 
 
-/*
-use `ic_1980', clear
-forvalues data_year = 1984(1)2013 {
-	di `data_year'
-	append using "`ic_`data_year''"
-}
-*/
 use `ic_2014', clear
-forvalues data_year = 2013(-1)1984 {
+forvalues data_year = 2013 (-1) 1984 {
 	di `data_year'
 	append using "`ic_`data_year''"
 }
 append using `ic_1980'
+
 compress
 sort unitid year
-save "$clean/institutional_characteristics.dta", replace
+save `clean'/institutional_characteristics_clean.dta, replace
 
 log close
