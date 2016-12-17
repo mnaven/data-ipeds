@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Creates a function that returns the spring academic year from a downloaded IPEDS file"""
+"""Creates a function that returns the fall academic year from a downloaded IPEDS file"""
 
 import os
 import re
@@ -36,7 +36,7 @@ def ipeds_year(file_path):
 
         # Accounts for four digits that denote two consecutive years
         elif int(four_digits[0:2]) == int(four_digits[-2:]) - 1 or (four_digits[0:2] == "99" and four_digits[-2:]) == "00":
-            two_digit_year = four_digits[-2:]
+            two_digit_year = four_digits[0:2]
             for four_digit_year in all_ipeds_years:
                 if two_digit_year == four_digit_year[-2:]:
                     year = four_digit_year

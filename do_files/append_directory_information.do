@@ -11,13 +11,10 @@ set scheme s1color
 
 if c(machine_type)=="Macintosh (Intel 64-bit)" & c(username)=="Naven" {
 	local home /Users/Naven/Documents/research/data/ipeds
-	local raw `home'/raw_data
-	local clean `home'/clean_data
 }
 if c(hostname)=="sapper" {
+	global S_ADO BASE;.;PERSONAL;PLUS;SITE;OLDPLACE
 	local home /home/users/navenm.AD3/research/data/ipeds
-	local raw `home'/raw_data
-	local clean `home'/clean_data
 }
 cd `home'
 
@@ -406,7 +403,7 @@ order unitid year
 sort unitid year
 xtset unitid year, yearly
 label data "IPEDS Directory Information"
-save `clean'/directory_information_clean.dta, replace
+save clean_data/directory_information_clean.dta, replace
 
 
 timer off 1
