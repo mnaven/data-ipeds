@@ -284,6 +284,23 @@ save `fall_enrollment_2000'
 
 * 2001
 use clean_data/2001/dct_ef2001a.dta, clear
+foreach race_imp of varlist xefrac* {
+	gen temp_`race_imp' = "A" if `race_imp'==30
+	replace temp_`race_imp' = "B" if `race_imp'==31
+	replace temp_`race_imp' = "C" if `race_imp'==11
+	replace temp_`race_imp' = "D" if `race_imp'==32
+	replace temp_`race_imp' = "G" if `race_imp'==12
+	replace temp_`race_imp' = "H" if `race_imp'==40
+	replace temp_`race_imp' = "L" if `race_imp'==22
+	replace temp_`race_imp' = "N" if `race_imp'==21
+	replace temp_`race_imp' = "P" if `race_imp'==20
+	replace temp_`race_imp' = "Q" if `race_imp'==23
+	replace temp_`race_imp' = "R" if `race_imp'==10
+	replace temp_`race_imp' = "Y" if `race_imp'==33
+	replace temp_`race_imp' = "Z" if `race_imp'==13
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2001
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2001
@@ -291,6 +308,23 @@ save `fall_enrollment_2001'
 
 * 2002
 use clean_data/2002/dct_ef2002a.dta, clear
+foreach race_imp of varlist xefrac* {
+	gen temp_`race_imp' = "A" if `race_imp'==30
+	replace temp_`race_imp' = "B" if `race_imp'==31
+	replace temp_`race_imp' = "C" if `race_imp'==11
+	replace temp_`race_imp' = "D" if `race_imp'==32
+	replace temp_`race_imp' = "G" if `race_imp'==12
+	replace temp_`race_imp' = "H" if `race_imp'==40
+	replace temp_`race_imp' = "L" if `race_imp'==22
+	replace temp_`race_imp' = "N" if `race_imp'==21
+	replace temp_`race_imp' = "P" if `race_imp'==20
+	replace temp_`race_imp' = "Q" if `race_imp'==23
+	replace temp_`race_imp' = "R" if `race_imp'==10
+	replace temp_`race_imp' = "Y" if `race_imp'==33
+	replace temp_`race_imp' = "Z" if `race_imp'==13
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2002
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2002
@@ -298,6 +332,26 @@ save `fall_enrollment_2002'
 
 * 2003
 use clean_data/2003/dct_ef2003a.dta, clear
+foreach race_imp of varlist xefrac* {
+	gen temp_`race_imp' = "A" if `race_imp'==30
+	replace temp_`race_imp' = "B" if `race_imp'==31
+	replace temp_`race_imp' = "C" if `race_imp'==11
+	replace temp_`race_imp' = "D" if `race_imp'==32
+	replace temp_`race_imp' = "G" if `race_imp'==12
+	replace temp_`race_imp' = "J" if `race_imp'==23
+	replace temp_`race_imp' = "K" if `race_imp'==24
+	replace temp_`race_imp' = "L" if `race_imp'==22
+	replace temp_`race_imp' = "N" if `race_imp'==21
+	replace temp_`race_imp' = "P" if `race_imp'==20
+	replace temp_`race_imp' = "R" if `race_imp'==10
+	replace temp_`race_imp' = "U" if `race_imp'==50
+	replace temp_`race_imp' = "V" if `race_imp'==51
+	replace temp_`race_imp' = "W" if `race_imp'==52
+	replace temp_`race_imp' = "Y" if `race_imp'==33
+	replace temp_`race_imp' = "Z" if `race_imp'==13
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2003
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2003
@@ -305,6 +359,26 @@ save `fall_enrollment_2003'
 
 * 2004
 use clean_data/2004/dct_ef2004a.dta, clear
+foreach race_imp of varlist xefrac* {
+	gen temp_`race_imp' = "A" if `race_imp'==30
+	replace temp_`race_imp' = "B" if `race_imp'==31
+	replace temp_`race_imp' = "C" if `race_imp'==11
+	replace temp_`race_imp' = "D" if `race_imp'==32
+	replace temp_`race_imp' = "G" if `race_imp'==12
+	replace temp_`race_imp' = "J" if `race_imp'==23
+	replace temp_`race_imp' = "K" if `race_imp'==24
+	replace temp_`race_imp' = "L" if `race_imp'==22
+	replace temp_`race_imp' = "N" if `race_imp'==21
+	replace temp_`race_imp' = "P" if `race_imp'==20
+	replace temp_`race_imp' = "R" if `race_imp'==10
+	replace temp_`race_imp' = "U" if `race_imp'==50
+	replace temp_`race_imp' = "V" if `race_imp'==51
+	replace temp_`race_imp' = "W" if `race_imp'==52
+	replace temp_`race_imp' = "Y" if `race_imp'==33
+	replace temp_`race_imp' = "Z" if `race_imp'==13
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2004
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2004
@@ -312,6 +386,26 @@ save `fall_enrollment_2004'
 
 * 2005
 use clean_data/2005/dct_ef2005a.dta, clear
+foreach race_imp of varlist xefrac* {
+	gen temp_`race_imp' = "A" if `race_imp'==30
+	replace temp_`race_imp' = "B" if `race_imp'==31
+	replace temp_`race_imp' = "C" if `race_imp'==11
+	replace temp_`race_imp' = "D" if `race_imp'==32
+	replace temp_`race_imp' = "G" if `race_imp'==12
+	replace temp_`race_imp' = "J" if `race_imp'==23
+	replace temp_`race_imp' = "K" if `race_imp'==24
+	replace temp_`race_imp' = "L" if `race_imp'==22
+	replace temp_`race_imp' = "N" if `race_imp'==21
+	replace temp_`race_imp' = "P" if `race_imp'==20
+	replace temp_`race_imp' = "R" if `race_imp'==10
+	replace temp_`race_imp' = "U" if `race_imp'==50
+	replace temp_`race_imp' = "V" if `race_imp'==51
+	replace temp_`race_imp' = "W" if `race_imp'==52
+	replace temp_`race_imp' = "Y" if `race_imp'==33
+	replace temp_`race_imp' = "Z" if `race_imp'==13
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2005
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2005
@@ -319,6 +413,27 @@ save `fall_enrollment_2005'
 
 * 2006
 use clean_data/2006/dct_ef2006a.dta, clear
+foreach race_imp of varlist xefrac* {
+	gen temp_`race_imp' = "A" if `race_imp'==30
+	replace temp_`race_imp' = "B" if `race_imp'==31
+	replace temp_`race_imp' = "C" if `race_imp'==11
+	replace temp_`race_imp' = "D" if `race_imp'==32
+	replace temp_`race_imp' = "G" if `race_imp'==12
+	replace temp_`race_imp' = "H" if `race_imp'==53
+	replace temp_`race_imp' = "J" if `race_imp'==23
+	replace temp_`race_imp' = "K" if `race_imp'==24
+	replace temp_`race_imp' = "L" if `race_imp'==22
+	replace temp_`race_imp' = "N" if `race_imp'==21
+	replace temp_`race_imp' = "P" if `race_imp'==20
+	replace temp_`race_imp' = "R" if `race_imp'==10
+	replace temp_`race_imp' = "U" if `race_imp'==50
+	replace temp_`race_imp' = "V" if `race_imp'==51
+	replace temp_`race_imp' = "W" if `race_imp'==52
+	replace temp_`race_imp' = "Y" if `race_imp'==33
+	replace temp_`race_imp' = "Z" if `race_imp'==13
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2006
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2006
