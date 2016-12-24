@@ -404,7 +404,6 @@ forvalues data_year = 2014 (-1) 1984 {
 append using `hd_1980'
 
 compress
-order unitid year
 order unitid instnm year sector iclevel control city stabbr fips countynm countycd ///
 	obereg locale longitud latitude ein opeid landgrnt hbcu tribal affil ///
 	hloffer ugoffer groffer fte enrtot instsize hdegofr1 deggrant medical ///

@@ -1,13 +1,32 @@
-version 12.1
+version 14.1
 cap log close
 clear all
+graph drop _all
 set more off
+set varabbrev off
+set graphics off
+set scheme s1color
 
-global home /Users/Naven/Google Drive/data/ipeds/data_scrape/merge_dta_files
-global raw /Users/Naven/Google Drive/data/ipeds/raw_data
-global clean /Users/Naven/Google Drive/data/ipeds/clean_data
+**** First created by Matthew Naven on October 23, 2015
 
-log using "$home/fall_enrollment.log", replace
+if c(machine_type)=="Macintosh (Intel 64-bit)" & c(username)=="Naven" {
+	local home /Users/Naven/Documents/research/data/ipeds
+}
+if c(hostname)=="sapper" {
+	global S_ADO BASE;.;PERSONAL;PLUS;SITE;OLDPLACE
+	local home /home/users/navenm.AD3/research/data/ipeds
+}
+cd `home'
+
+log using log_files/append_fall_enrollment.log, replace
+timer on 1
+
+
+/*
+This file appends all the individual years of the fall enrollment
+datasets from IPEDS and then cleans the resulting dataset.
+*/
+
 
 * 1980
 cd "$raw/1980"
