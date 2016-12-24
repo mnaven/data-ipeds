@@ -45,89 +45,37 @@ label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1984
 save `fall_enrollment_1984'
 
-* 1985 (no data by race)
-/*use clean_data/1985/dct_ef1985.dta, clear
-gen year = 1985
-label variable year "Year of Fall Semester"
-tempfile fall_enrollment_1985
-save `fall_enrollment_1985'*/
-
 * 1986
 use clean_data/1986/dct_ef1986_a.dta, clear
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+destring lstudy, replace
 gen year = 1986
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1986
 save `fall_enrollment_1986'
 
-* 1987 (no data by race)
-/*use clean_data/1987/dct_ef1987_a.dta, clear
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
-gen year = 1987
-label variable year "Year of Fall Semester"
-tempfile fall_enrollment_1987
-save `fall_enrollment_1987'*/
-
 * 1988
 use clean_data/1988/dct_ef1988_a.dta, clear
-/*tostring h_samp, replace
-capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+destring lstudy, replace
 gen year = 1988
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1988
 save `fall_enrollment_1988'
 
-* 1989 (no data by race)
-/*use clean_data/1989/dct_ef1989_a.dta, clear
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
-gen year = 1989
-label variable year "Year of Fall Semester"
-tempfile fall_enrollment_1989
-save `fall_enrollment_1989'*/
-
 * 1990
 use clean_data/1990/dct_ef90_a.dta, clear
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+destring lstudy, replace
 gen year = 1990
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1990
@@ -135,15 +83,11 @@ save `fall_enrollment_1990'
 
 * 1991
 use clean_data/1991/dct_ef1991_a.dta, clear
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+destring lstudy, replace
 gen year = 1991
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1991
@@ -151,15 +95,11 @@ save `fall_enrollment_1991'
 
 * 1992
 use clean_data/1992/dct_ef1992_a.dta, clear
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+destring lstudy, replace
 gen year = 1992
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1992
@@ -167,15 +107,11 @@ save `fall_enrollment_1992'
 
 * 1993
 use clean_data/1993/dct_ef1993_a.dta, clear
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+destring lstudy, replace
 gen year = 1993
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1993
@@ -184,15 +120,11 @@ save `fall_enrollment_1993'
 * 1994
 *use clean_data/1994/dct_ef1994_anr.dta, clear // not raked
 use clean_data/1994/dct_ef1994_ark.dta, clear // raked
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+destring lstudy, replace
 gen year = 1994
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1994
@@ -201,16 +133,12 @@ save `fall_enrollment_1994'
 * 1995
 *use clean_data/1995/dct_ef95_anr.dta, clear // not raked
 use clean_data/1995/dct_ef95_ark.dta, clear // raked
-/*tostring filler3, replace
-capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
+/*tostring filler3, replace*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+destring lstudy, replace
 gen year = 1995
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1995
@@ -219,15 +147,11 @@ save `fall_enrollment_1995'
 * 1996
 *use clean_data/1996/dct_ef96_anr.dta, clear // not raked
 use clean_data/1996/dct_ef96_ark.dta, clear // raked
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	destring lstudy, replace
-}*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+destring lstudy, replace
 gen year = 1996
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1996
@@ -242,7 +166,7 @@ if !_rc {
 	replace lstudy = "1" if lstudy=="A"
 	replace lstudy = "2" if lstudy=="B"
 	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
+	replace lstudy = "5" if lstudy=="D"
 	destring lstudy, replace
 }
 gen year = 1997
@@ -253,16 +177,12 @@ save `fall_enrollment_1997'
 * 1998
 *use clean_data/1998/dct_ef98_anr.dta, clear // not raked
 use clean_data/1998/dct_ef98_ark.dta, clear // raked
-/*capture confirm string variable lstudy
-if !_rc {
-	replace lstudy = upper(ltrim(rtrim(lstudy)))
-	replace lstudy = "1" if lstudy=="A"
-	replace lstudy = "2" if lstudy=="B"
-	replace lstudy = "3" if lstudy=="C"
-	replace lstudy = "99" if lstudy=="D"
-	replace lstudy = "4" if lstudy=="E"
-	destring lstudy, replace
-}*/
+replace lstudy = "1" if lstudy=="A"
+replace lstudy = "2" if lstudy=="B"
+replace lstudy = "3" if lstudy=="C"
+replace lstudy = "5" if lstudy=="D"
+replace lstudy = "4" if lstudy=="E"
+destring lstudy, replace
 gen year = 1998
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_1998
@@ -284,7 +204,7 @@ save `fall_enrollment_2000'
 
 * 2001
 use clean_data/2001/dct_ef2001a.dta, clear
-foreach race_imp of varlist xefrac* {
+/*foreach race_imp of varlist xefrac* {
 	gen temp_`race_imp' = "A" if `race_imp'==30
 	replace temp_`race_imp' = "B" if `race_imp'==31
 	replace temp_`race_imp' = "C" if `race_imp'==11
@@ -300,7 +220,7 @@ foreach race_imp of varlist xefrac* {
 	replace temp_`race_imp' = "Z" if `race_imp'==13
 	drop `race_imp'
 	rename temp_`race_imp' `race_imp'
-}
+}*/
 gen year = 2001
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2001
@@ -308,7 +228,7 @@ save `fall_enrollment_2001'
 
 * 2002
 use clean_data/2002/dct_ef2002a.dta, clear
-foreach race_imp of varlist xefrac* {
+/*foreach race_imp of varlist xefrac* {
 	gen temp_`race_imp' = "A" if `race_imp'==30
 	replace temp_`race_imp' = "B" if `race_imp'==31
 	replace temp_`race_imp' = "C" if `race_imp'==11
@@ -324,7 +244,7 @@ foreach race_imp of varlist xefrac* {
 	replace temp_`race_imp' = "Z" if `race_imp'==13
 	drop `race_imp'
 	rename temp_`race_imp' `race_imp'
-}
+}*/
 gen year = 2002
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2002
@@ -332,7 +252,7 @@ save `fall_enrollment_2002'
 
 * 2003
 use clean_data/2003/dct_ef2003a.dta, clear
-foreach race_imp of varlist xefrac* {
+/*foreach race_imp of varlist xefrac* {
 	gen temp_`race_imp' = "A" if `race_imp'==30
 	replace temp_`race_imp' = "B" if `race_imp'==31
 	replace temp_`race_imp' = "C" if `race_imp'==11
@@ -351,7 +271,7 @@ foreach race_imp of varlist xefrac* {
 	replace temp_`race_imp' = "Z" if `race_imp'==13
 	drop `race_imp'
 	rename temp_`race_imp' `race_imp'
-}
+}*/
 gen year = 2003
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2003
@@ -359,7 +279,7 @@ save `fall_enrollment_2003'
 
 * 2004
 use clean_data/2004/dct_ef2004a.dta, clear
-foreach race_imp of varlist xefrac* {
+/*foreach race_imp of varlist xefrac* {
 	gen temp_`race_imp' = "A" if `race_imp'==30
 	replace temp_`race_imp' = "B" if `race_imp'==31
 	replace temp_`race_imp' = "C" if `race_imp'==11
@@ -378,7 +298,7 @@ foreach race_imp of varlist xefrac* {
 	replace temp_`race_imp' = "Z" if `race_imp'==13
 	drop `race_imp'
 	rename temp_`race_imp' `race_imp'
-}
+}*/
 gen year = 2004
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2004
@@ -386,7 +306,7 @@ save `fall_enrollment_2004'
 
 * 2005
 use clean_data/2005/dct_ef2005a.dta, clear
-foreach race_imp of varlist xefrac* {
+/*foreach race_imp of varlist xefrac* {
 	gen temp_`race_imp' = "A" if `race_imp'==30
 	replace temp_`race_imp' = "B" if `race_imp'==31
 	replace temp_`race_imp' = "C" if `race_imp'==11
@@ -405,7 +325,7 @@ foreach race_imp of varlist xefrac* {
 	replace temp_`race_imp' = "Z" if `race_imp'==13
 	drop `race_imp'
 	rename temp_`race_imp' `race_imp'
-}
+}*/
 gen year = 2005
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2005
@@ -413,7 +333,7 @@ save `fall_enrollment_2005'
 
 * 2006
 use clean_data/2006/dct_ef2006a.dta, clear
-foreach race_imp of varlist xefrac* {
+/*foreach race_imp of varlist xefrac* {
 	gen temp_`race_imp' = "A" if `race_imp'==30
 	replace temp_`race_imp' = "B" if `race_imp'==31
 	replace temp_`race_imp' = "C" if `race_imp'==11
@@ -433,7 +353,7 @@ foreach race_imp of varlist xefrac* {
 	replace temp_`race_imp' = "Z" if `race_imp'==13
 	drop `race_imp'
 	rename temp_`race_imp' `race_imp'
-}
+}*/
 gen year = 2006
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2006
@@ -441,7 +361,7 @@ save `fall_enrollment_2006'
 
 * 2007
 use clean_data/2007/dct_ef2007a.dta, clear
-foreach race_imp of varlist xefrac* {
+/*foreach race_imp of varlist xefrac* {
 	gen temp_`race_imp' = "A" if `race_imp'==30
 	replace temp_`race_imp' = "B" if `race_imp'==31
 	replace temp_`race_imp' = "C" if `race_imp'==11
@@ -461,7 +381,7 @@ foreach race_imp of varlist xefrac* {
 	replace temp_`race_imp' = "Z" if `race_imp'==13
 	drop `race_imp'
 	rename temp_`race_imp' `race_imp'
-}
+}*/
 gen year = 2007
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2007
@@ -469,6 +389,36 @@ save `fall_enrollment_2007'
 
 * 2008
 use clean_data/2008/dct_ef2008a.dta, clear
+label def xef 30 "Not applicable"
+label def xef 31 "Institution left item blank", add
+label def xef 11 "Analyst corrected reported value", add
+label def xef 32 "Do not know", add
+label def xef 12 "Data generated from other data values", add
+label def xef 53 "Value not derived - data not usable", add
+label def xef 23 "Logical imputation", add
+label def xef 24 "Ratio adjustment", add
+label def xef 22 "Imputed using the Group Median procedure", add
+label def xef 21 "Imputed using Nearest Neighbor procedure", add
+label def xef 20 "Imputed using Carry Forward procedure", add
+label def xef 10 "Reported", add
+label def xef 13 "Implied zero", add
+foreach race_imp of varlist xef* {
+	gen temp_`race_imp' = 30 if `race_imp'=="A"
+	replace temp_`race_imp' = 31 if `race_imp'=="B"
+	replace temp_`race_imp' = 11 if `race_imp'=="C"
+	replace temp_`race_imp' = 32 if `race_imp'=="D"
+	replace temp_`race_imp' = 12 if `race_imp'=="G"
+	replace temp_`race_imp' = 53 if `race_imp'=="H"
+	replace temp_`race_imp' = 23 if `race_imp'=="J"
+	replace temp_`race_imp' = 24 if `race_imp'=="K"
+	replace temp_`race_imp' = 22 if `race_imp'=="L"
+	replace temp_`race_imp' = 21 if `race_imp'=="N"
+	replace temp_`race_imp' = 20 if `race_imp'=="P"
+	replace temp_`race_imp' = 10 if `race_imp'=="R"
+	replace temp_`race_imp' = 13 if `race_imp'=="Z"
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2008
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2008
@@ -476,6 +426,36 @@ save `fall_enrollment_2008'
 
 * 2009
 use clean_data/2009/dct_ef2009a_rv.dta, clear
+label def xef 30 "Not applicable"
+label def xef 31 "Institution left item blank", add
+label def xef 11 "Analyst corrected reported value", add
+label def xef 32 "Do not know", add
+label def xef 12 "Data generated from other data values", add
+label def xef 53 "Value not derived - data not usable", add
+label def xef 23 "Logical imputation", add
+label def xef 24 "Ratio adjustment", add
+label def xef 22 "Imputed using the Group Median procedure", add
+label def xef 21 "Imputed using Nearest Neighbor procedure", add
+label def xef 20 "Imputed using Carry Forward procedure", add
+label def xef 10 "Reported", add
+label def xef 13 "Implied zero", add
+foreach race_imp of varlist xef* {
+	gen temp_`race_imp' = 30 if `race_imp'=="A"
+	replace temp_`race_imp' = 31 if `race_imp'=="B"
+	replace temp_`race_imp' = 11 if `race_imp'=="C"
+	replace temp_`race_imp' = 32 if `race_imp'=="D"
+	replace temp_`race_imp' = 12 if `race_imp'=="G"
+	replace temp_`race_imp' = 53 if `race_imp'=="H"
+	replace temp_`race_imp' = 23 if `race_imp'=="J"
+	replace temp_`race_imp' = 24 if `race_imp'=="K"
+	replace temp_`race_imp' = 22 if `race_imp'=="L"
+	replace temp_`race_imp' = 21 if `race_imp'=="N"
+	replace temp_`race_imp' = 20 if `race_imp'=="P"
+	replace temp_`race_imp' = 10 if `race_imp'=="R"
+	replace temp_`race_imp' = 13 if `race_imp'=="Z"
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2009
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2009
@@ -483,6 +463,36 @@ save `fall_enrollment_2009'
 
 * 2010
 use clean_data/2010/dct_ef2010a.dta, clear
+label def xef 30 "Not applicable"
+label def xef 31 "Institution left item blank", add
+label def xef 11 "Analyst corrected reported value", add
+label def xef 32 "Do not know", add
+label def xef 12 "Data generated from other data values", add
+label def xef 53 "Value not derived - data not usable", add
+label def xef 23 "Logical imputation", add
+label def xef 24 "Ratio adjustment", add
+label def xef 22 "Imputed using the Group Median procedure", add
+label def xef 21 "Imputed using Nearest Neighbor procedure", add
+label def xef 20 "Imputed using Carry Forward procedure", add
+label def xef 10 "Reported", add
+label def xef 13 "Implied zero", add
+foreach race_imp of varlist xef* {
+	gen temp_`race_imp' = 30 if `race_imp'=="A"
+	replace temp_`race_imp' = 31 if `race_imp'=="B"
+	replace temp_`race_imp' = 11 if `race_imp'=="C"
+	replace temp_`race_imp' = 32 if `race_imp'=="D"
+	replace temp_`race_imp' = 12 if `race_imp'=="G"
+	replace temp_`race_imp' = 53 if `race_imp'=="H"
+	replace temp_`race_imp' = 23 if `race_imp'=="J"
+	replace temp_`race_imp' = 24 if `race_imp'=="K"
+	replace temp_`race_imp' = 22 if `race_imp'=="L"
+	replace temp_`race_imp' = 21 if `race_imp'=="N"
+	replace temp_`race_imp' = 20 if `race_imp'=="P"
+	replace temp_`race_imp' = 10 if `race_imp'=="R"
+	replace temp_`race_imp' = 13 if `race_imp'=="Z"
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2010
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2010
@@ -490,6 +500,36 @@ save `fall_enrollment_2010'
 
 * 2011
 use clean_data/2011/dct_ef2011a.dta, clear
+label def xef 30 "Not applicable"
+label def xef 31 "Institution left item blank", add
+label def xef 11 "Analyst corrected reported value", add
+label def xef 32 "Do not know", add
+label def xef 12 "Data generated from other data values", add
+label def xef 53 "Value not derived - data not usable", add
+label def xef 23 "Logical imputation", add
+label def xef 24 "Ratio adjustment", add
+label def xef 22 "Imputed using the Group Median procedure", add
+label def xef 21 "Imputed using Nearest Neighbor procedure", add
+label def xef 20 "Imputed using Carry Forward procedure", add
+label def xef 10 "Reported", add
+label def xef 13 "Implied zero", add
+foreach race_imp of varlist xef* {
+	gen temp_`race_imp' = 30 if `race_imp'=="A"
+	replace temp_`race_imp' = 31 if `race_imp'=="B"
+	replace temp_`race_imp' = 11 if `race_imp'=="C"
+	replace temp_`race_imp' = 32 if `race_imp'=="D"
+	replace temp_`race_imp' = 12 if `race_imp'=="G"
+	replace temp_`race_imp' = 53 if `race_imp'=="H"
+	replace temp_`race_imp' = 23 if `race_imp'=="J"
+	replace temp_`race_imp' = 24 if `race_imp'=="K"
+	replace temp_`race_imp' = 22 if `race_imp'=="L"
+	replace temp_`race_imp' = 21 if `race_imp'=="N"
+	replace temp_`race_imp' = 20 if `race_imp'=="P"
+	replace temp_`race_imp' = 10 if `race_imp'=="R"
+	replace temp_`race_imp' = 13 if `race_imp'=="Z"
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2011
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2011
@@ -497,6 +537,36 @@ save `fall_enrollment_2011'
 
 * 2012
 use clean_data/2012/dct_ef2012a.dta, clear
+label def xef 30 "Not applicable"
+label def xef 31 "Institution left item blank", add
+label def xef 11 "Analyst corrected reported value", add
+label def xef 32 "Do not know", add
+label def xef 12 "Data generated from other data values", add
+label def xef 53 "Value not derived - data not usable", add
+label def xef 23 "Logical imputation", add
+label def xef 24 "Ratio adjustment", add
+label def xef 22 "Imputed using the Group Median procedure", add
+label def xef 21 "Imputed using Nearest Neighbor procedure", add
+label def xef 20 "Imputed using Carry Forward procedure", add
+label def xef 10 "Reported", add
+label def xef 13 "Implied zero", add
+foreach race_imp of varlist xef* {
+	gen temp_`race_imp' = 30 if `race_imp'=="A"
+	replace temp_`race_imp' = 31 if `race_imp'=="B"
+	replace temp_`race_imp' = 11 if `race_imp'=="C"
+	replace temp_`race_imp' = 32 if `race_imp'=="D"
+	replace temp_`race_imp' = 12 if `race_imp'=="G"
+	replace temp_`race_imp' = 53 if `race_imp'=="H"
+	replace temp_`race_imp' = 23 if `race_imp'=="J"
+	replace temp_`race_imp' = 24 if `race_imp'=="K"
+	replace temp_`race_imp' = 22 if `race_imp'=="L"
+	replace temp_`race_imp' = 21 if `race_imp'=="N"
+	replace temp_`race_imp' = 20 if `race_imp'=="P"
+	replace temp_`race_imp' = 10 if `race_imp'=="R"
+	replace temp_`race_imp' = 13 if `race_imp'=="Z"
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2012
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2012
@@ -504,6 +574,36 @@ save `fall_enrollment_2012'
 
 * 2013
 use clean_data/2013/dct_ef2013a.dta, clear
+label def xef 30 "Not applicable"
+label def xef 31 "Institution left item blank", add
+label def xef 11 "Analyst corrected reported value", add
+label def xef 32 "Do not know", add
+label def xef 12 "Data generated from other data values", add
+label def xef 53 "Value not derived - data not usable", add
+label def xef 23 "Logical imputation", add
+label def xef 24 "Ratio adjustment", add
+label def xef 22 "Imputed using the Group Median procedure", add
+label def xef 21 "Imputed using Nearest Neighbor procedure", add
+label def xef 20 "Imputed using Carry Forward procedure", add
+label def xef 10 "Reported", add
+label def xef 13 "Implied zero", add
+foreach race_imp of varlist xef* {
+	gen temp_`race_imp' = 30 if `race_imp'=="A"
+	replace temp_`race_imp' = 31 if `race_imp'=="B"
+	replace temp_`race_imp' = 11 if `race_imp'=="C"
+	replace temp_`race_imp' = 32 if `race_imp'=="D"
+	replace temp_`race_imp' = 12 if `race_imp'=="G"
+	replace temp_`race_imp' = 53 if `race_imp'=="H"
+	replace temp_`race_imp' = 23 if `race_imp'=="J"
+	replace temp_`race_imp' = 24 if `race_imp'=="K"
+	replace temp_`race_imp' = 22 if `race_imp'=="L"
+	replace temp_`race_imp' = 21 if `race_imp'=="N"
+	replace temp_`race_imp' = 20 if `race_imp'=="P"
+	replace temp_`race_imp' = 10 if `race_imp'=="R"
+	replace temp_`race_imp' = 13 if `race_imp'=="Z"
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2013
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2013
@@ -511,6 +611,36 @@ save `fall_enrollment_2013'
 
 * 2014
 use clean_data/2014/dct_ef2014a.dta, clear
+label def xef 30 "Not applicable"
+label def xef 31 "Institution left item blank", add
+label def xef 11 "Analyst corrected reported value", add
+label def xef 32 "Do not know", add
+label def xef 12 "Data generated from other data values", add
+label def xef 53 "Value not derived - data not usable", add
+label def xef 23 "Logical imputation", add
+label def xef 24 "Ratio adjustment", add
+label def xef 22 "Imputed using the Group Median procedure", add
+label def xef 21 "Imputed using Nearest Neighbor procedure", add
+label def xef 20 "Imputed using Carry Forward procedure", add
+label def xef 10 "Reported", add
+label def xef 13 "Implied zero", add
+foreach race_imp of varlist xef* {
+	gen temp_`race_imp' = 30 if `race_imp'=="A"
+	replace temp_`race_imp' = 31 if `race_imp'=="B"
+	replace temp_`race_imp' = 11 if `race_imp'=="C"
+	replace temp_`race_imp' = 32 if `race_imp'=="D"
+	replace temp_`race_imp' = 12 if `race_imp'=="G"
+	replace temp_`race_imp' = 53 if `race_imp'=="H"
+	replace temp_`race_imp' = 23 if `race_imp'=="J"
+	replace temp_`race_imp' = 24 if `race_imp'=="K"
+	replace temp_`race_imp' = 22 if `race_imp'=="L"
+	replace temp_`race_imp' = 21 if `race_imp'=="N"
+	replace temp_`race_imp' = 20 if `race_imp'=="P"
+	replace temp_`race_imp' = 10 if `race_imp'=="R"
+	replace temp_`race_imp' = 13 if `race_imp'=="Z"
+	drop `race_imp'
+	rename temp_`race_imp' `race_imp'
+}
 gen year = 2014
 label variable year "Year of Fall Semester"
 tempfile fall_enrollment_2014
