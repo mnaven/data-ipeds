@@ -46,7 +46,7 @@ A list of files for which a .dta file could not be successfully created from the
 A README file describes the order in which each script should be run, although the _run_all.py_ script will automatically run the scripts in the correct order. The IPEDS files are originally downloaded as zipped files, however the project also includes functions and scripts that will edit unzipped files in case the files have already been unzipped or if edits only need to be made to an individual file.
 
 
-### Do Files
+### Do Files (In Progress)
 After creating individual year .dta files using the Python scripts, these files append the individual years for each survey together and then clean the resulting datasets.
 
 
