@@ -1,5 +1,21 @@
-version 14.1
+version 14.2
 cap log close
+
+*****************************************************
+* First created by Matthew Naven on November 10, 2016 *
+*****************************************************
+
+if c(machine_type)=="Macintosh (Intel 64-bit)" & c(username)=="Naven" {
+	local home "/Users/Naven/Documents/research/data/ipeds"
+}
+if c(hostname)=="sapper" {
+	global S_ADO BASE;.;PERSONAL;PLUS;SITE;OLDPLACE
+	local home "/home/users/navenm.AD3/research/data/ipeds"
+}
+cd `home'
+
+log using log_files/append_directory_information.log, replace
+
 clear all
 graph drop _all
 set more off
@@ -7,27 +23,60 @@ set varabbrev off
 set graphics off
 set scheme s1color
 
-**** First created by Matthew Naven on November 10, 2016
 
-if c(machine_type)=="Macintosh (Intel 64-bit)" & c(username)=="Naven" {
-	local home /Users/Naven/Documents/research/data/ipeds
-}
-if c(hostname)=="sapper" {
-	global S_ADO BASE;.;PERSONAL;PLUS;SITE;OLDPLACE
-	local home /home/users/navenm.AD3/research/data/ipeds
-}
-cd `home'
-
-log using log_files/append_directory_information.log, replace
-timer on 1
-
-
+***************
+* Description *
+***************
 /*
-This file appends all the individual years of the institutional characteristics
+This file appends all of the individual years of the directory information
 datasets from IPEDS and then cleans the resulting dataset.
 */
 
 
+**********
+* Macros *
+**********
+#delimit ;
+local esttab_options `"
+	b(%9.3g) se(%9.3g)
+	star(* 0.1 ** 0.05 *** 0.01)
+	noobs
+	compress
+	label interaction(\times) nomtitles
+	booktabs
+	replace
+	substitute(\_ _)
+	"' ;
+local esttab_scalars `"
+	scalars(
+	"N Observations"
+	"r2_a Adjusted $ R^2 $"
+	)
+	sfmt(
+	%9.3gc
+	%9.3g
+	)
+	"' ;
+local estab_mgroups `"
+	mgroups(""
+	, pattern()
+	prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span}))
+	"' ;
+local esttab_keep `"
+	keep(
+	
+	)
+	order(
+	
+	)
+	"' ;
+#delimit cr
+
+
+timer on 1
+*****************
+* Begin Do File *
+*****************
 * 1980
 use clean_data/1980/dct_ic1980.dta, clear
 tostring zip, replace
@@ -396,8 +445,9 @@ save `hd_2015'
 
 
 
-use `hd_2015', clear
-forvalues data_year = 2014 (-1) 1984 {
+**** Append all years of data
+clear
+forvalues data_year = 2015 (-1) 1984 {
 	di `data_year'
 	append using "`hd_`data_year''"
 }
