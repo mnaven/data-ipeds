@@ -77,6 +77,7 @@ timer on 1
 *****************
 * Begin Do File *
 *****************
+**************** Append individual years of data
 * 1980
 use clean_data/1980/dct_ic1980.dta, clear
 tostring zip, replace
@@ -455,6 +456,97 @@ append using `hd_1980'
 
 compress
 order unitid instnm year sector iclevel control city stabbr fips countynm countycd ///
+	obereg locale longitud latitude ein opeid landgrnt hbcu tribal affil ///
+	hloffer ugoffer groffer fte enrtot instsize hdegofr1 deggrant medical ///
+	cindon cinson cotson cindoff cinsoff cotsoff cindfam cinsfam cotsfam ///
+	pctmin1 pctmin2 pctmin3 pctmin4 ptacipef
+sort unitid year
+xtset unitid year, yearly
+label data "IPEDS Directory Information"
+save clean_data/directory_information_appended.dta, replace
+
+
+
+
+
+
+
+
+**************** Clean combined dataset
+*codebook, all problems detail
+sum
+
+* Recode variables
+recode control 0=. -3=.
+recode sector 99=.
+
+* Public/Private
+label def public 1 "Public" 0 "Private"
+gen public:public = (control==1)
+replace public = . if mi(control)
+label var public "Public Institution"
+
+label def private_nfp 1 "Private NFP" 0 "Public/Private FP"
+gen private_nfp:private_nfp = (control==2 & year>=1986)
+replace private_nfp = . if mi(control)
+replace private_nfp = . if year<=1985
+label var private_nfp "Private Not-For-Profit Institution"
+
+label def private_fp 1 "Private FP" 0 "Public/Private NFP"
+gen private_fp:private_fp = (control==3 & year>=1986)
+replace private_fp = . if mi(control)
+replace private_fp = . if year<=1985
+label var private_fp "Private For-Profit Institution"
+
+label def private 1 "Private" 0 "Public", replace
+gen private:private = (private_nfp==1 | private_fp==1 | (control==2 & year<=1985))
+replace private = . if mi(private_nfp) & mi(private_fp) & (mi(control) & year<=1985 | year>=1986)
+label var private "Private Institution"
+
+* Create groups based on public/private
+*egen owner = group(public private_nfp private_fp), lname(owner)
+label def owner 1 "Public" 2 "Private NFP" 3 "Private FP"
+gen owner:owner = 1 if public==1
+replace owner = 2 if private_nfp==1
+replace owner = 3 if private_fp==1
+
+* Four-Year/Community College/Below Associates
+label def university 1 "Four-Year University" 0 "Less than Four Years"
+gen university:university = (iclevel==1)
+replace university = . if mi(iclevel)
+label var university "Four-Year University"
+
+label def community_college 1 "Community College" 0 "University/Below Associates"
+gen community_college:community_college = (iclevel==2)
+replace community_college = . if mi(iclevel)
+label var community_college "Two to Four-Year College"
+
+label def below_associates 1 "Below Associates" 0 "Associates or Higher"
+gen below_associates:below_associates = (iclevel==3)
+replace below_associates = . if mi(iclevel)
+label var below_associates "Less than Two Years (Below Associate)"
+
+* Create groups by university/community college/below associates
+*egen level = group(university community_college below_associates), lname(level)
+label def level 1 "University" 2 "Community College" 3 "Below Associates"
+gen level:level = 1 if university==1
+replace level = 2 if community_college==1
+replace level = 3 if below_associates==1
+
+* Create groups by type and level
+egen owner_level = group(owner level), lname(owner_level)
+/*label def owner_level 11 "Public University" 12 "Public Community College" ///
+	13 "Public Below Associates" 21 "Private NFP University" ///
+	22 "Private NFP Community College" 23 "Private NFP Below Associates" ///
+	31 "Private FP University" 32 "Private FP Communty College" ///
+	33 "Private FP Below Associates"
+gen owner_level:owner_level = 10 * type + level*/
+
+
+
+
+compress
+order unitid instnm year owner_level city stabbr fips countynm countycd ///
 	obereg locale longitud latitude ein opeid landgrnt hbcu tribal affil ///
 	hloffer ugoffer groffer fte enrtot instsize hdegofr1 deggrant medical ///
 	cindon cinson cotson cindoff cinsoff cotsoff cindfam cinsfam cotsfam ///
