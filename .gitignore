@@ -7,176 +7,185 @@ downloads
 log_files
 raw_data
 
-# Log files
-*.log
 
-# Data Files
-*.csv
+
+
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+
+
+
+### Data ###
 *.zip
+*.csv
+*.tab
 
-## Python
+
+
+
+### Stata ###
+# .gitignore file for git projects containing Stata files
+# Commercial statistical software: http://www.stata.com
+
+# Stata dataset and output files
+*.dta
+*.ster
+*.gph
+*.log
+*.smcl
+*.stpr
+*.stsem
+
+# Graphic export files from Stata
+# Stata command graph export: http://www.stata.com/manuals14/g-2graphexport.pdf
+#
+# You may add graphic export files to your .gitignore. However you should be
+# aware that this will exclude all image files from this main directory
+# and subdirectories.
+*.ps
+*.eps
+*.wmf
+*.emf
+*.pdf
+*.png
+*.tif
+
+
+
+
+### Python ###
+# Project files
 *.pyc
 *.iml
 *.xml
 *.name
 
-## Stata
-*.dta
-*.smcl
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-## Core latex/pdflatex auxiliary files:
-*.aux
-*.lof
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
 *.log
-*.lot
-*.fls
-*.out
-*.toc
-*.fmt
+.static_storage/
+.media/
+local_settings.py
 
-## Intermediate documents:
-*.dvi
-*-converted-to.*
-# these rules might exclude image files for figures etc.
-*.ps
-*.eps
-*.pdf
+# Flask stuff:
+instance/
+.webassets-cache
 
-## Bibliography auxiliary files (bibtex/biblatex/biber):
-*.bbl
-*.bcf
-*.blg
-*-blx.aux
-*-blx.bib
-*.brf
-*.run.xml
+# Scrapy stuff:
+.scrapy
 
-## Build tool auxiliary files:
-*.fdb_latexmk
-*.synctex
-*.synctex.gz
-*.synctex.gz(busy)
-*.pdfsync
+# Sphinx documentation
+docs/_build/
 
-## Auxiliary and intermediate files from other packages:
-# algorithms
-*.alg
-*.loa
+# PyBuilder
+target/
 
-# achemso
-acs-*.bib
+# Jupyter Notebook
+.ipynb_checkpoints
 
-# amsthm
-*.thm
+# pyenv
+.python-version
 
-# beamer
-*.nav
-*.snm
-*.vrb
+# celery beat schedule file
+celerybeat-schedule
 
-# cprotect
-*.cpt
+# SageMath parsed files
+*.sage.py
 
-#(e)ledmac/(e)ledpar
-*.end
-*.[1-9]
-*.[1-9][0-9]
-*.[1-9][0-9][0-9]
-*.[1-9]R
-*.[1-9][0-9]R
-*.[1-9][0-9][0-9]R
-*.eledsec[1-9]
-*.eledsec[1-9]R
-*.eledsec[1-9][0-9]
-*.eledsec[1-9][0-9]R
-*.eledsec[1-9][0-9][0-9]
-*.eledsec[1-9][0-9][0-9]R
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# glossaries
-*.acn
-*.acr
-*.glg
-*.glo
-*.gls
+# Spyder project settings
+.spyderproject
+.spyproject
 
-# gnuplottex
-*-gnuplottex-*
+# Rope project settings
+.ropeproject
 
-# hyperref
-*.brf
+# mkdocs documentation
+/site
 
-# knitr
-*-concordance.tex
-*.tikz
-*-tikzDictionary
-
-# listings
-*.lol
-
-# makeidx
-*.idx
-*.ilg
-*.ind
-*.ist
-
-# minitoc
-*.maf
-*.mtc
-*.mtc[0-9]
-*.mtc[1-9][0-9]
-
-# minted
-_minted*
-*.pyg
-
-# morewrites
-*.mw
-
-# mylatexformat
-*.fmt
-
-# nomencl
-*.nlo
-
-# sagetex
-*.sagetex.sage
-*.sagetex.py
-*.sagetex.scmd
-
-# sympy
-*.sout
-*.sympy
-sympy-plots-for-*.tex/
-
-# pdfcomment
-*.upa
-*.upb
-
-#pythontex
-*.pytxcode
-pythontex-files-*/
-
-# Texpad
-.texpadtmp
-
-# TikZ & PGF
-*.dpth
-*.md5
-*.auxlock
-
-# todonotes
-*.tdo
-
-# xindy
-*.xdy
-
-# xypic precompiled matrices
-*.xyc
-
-# WinEdt
-*.bak
-*.sav
-
-# endfloat
-*.ttt
-*.fff
+# mypy
+.mypy_cache/
