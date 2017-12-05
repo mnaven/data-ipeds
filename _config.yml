@@ -1,8 +1,0 @@
-title: IPEDS
-description: The Integrated Postsecondary Education Data System
-google_analytics: 
-show_downloads: true
-theme: jekyll-theme-slate
-
-gems:
-  - jekyll-mentions
